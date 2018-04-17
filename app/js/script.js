@@ -1,6 +1,6 @@
 var $ =  jQuery
-var token = '1466267444.6d74351.c025731af1b644c8a4f1fe6a67fb9d46',
-userid = "1466267444",
+var token = 'xxx',
+userid = "xxx",
 num_photos = 30
 
 window.onload = function init(){
@@ -22,46 +22,6 @@ window.onload = function init(){
    }
   })
 
-  // MOVE ROTATING IMAGE
-  var divImg = document.getElementById('rotate-img')
-  var mousePosition
-  var offset = [0,0]
-  var isDown = false
-
-  function moveElement(input){
-    if(input){
-      input.addEventListener('mousedown', function(e) {
-        console.log("MOUSE DOWN")
-        isDown = true
-        offset = [
-          input.offsetLeft - e.clientX,
-          input.offsetTop - e.clientY
-        ]
-      }, true)
-
-      divImg.addEventListener('mouseup', function() {
-        console.log("MOUSE UP")
-        isDown = false
-      }, true)
-
-      divImg.addEventListener('mousemove', function(e) {
-        e.preventDefault()
-        if (isDown) {
-          mousePosition = {
-            x : e.clientX,
-            y : e.clientY
-          }
-          input.style.left = (mousePosition.x + offset[0]) + 'px'
-          input.style.top  = (mousePosition.y + offset[1]) + 'px'
-        }
-      }, true)
-    } else {
-      console.log("Not moving element")
-    }
-  }
-  moveElement(divImg)
-
-
   // CHECK BROWSER FOR AUDIO
   var isSafari = window.safari !== undefined
   var SAFARI = document.getElementById("safariAudio")
@@ -76,55 +36,6 @@ window.onload = function init(){
     OTHER_BROWSER.style.display="block"
   }
 
-  // var promise = document.querySelector('audio').play()
-  // if (promise !== undefined) {
-  //   promise.catch(function(error){
-  //     console.log("AUDIO AUTOPLAY WAS PREVENTED")
-  //       // Auto-play was prevented
-  //       // Show a UI element to let the user manually start playback
-  //   }).then(function(){
-  //       // Auto-play started
-  //       console.log("WHAT NOW?")
-  //       // SAFARI.play()
-  //   })
-  // }
-
-  // const audio = new window.Audio()
-  // audio.src =
-  //   'https://raw.githubusercontent.com/vnglst/autoplay-tutorial/master/mp3/modem-sound.mp3'
-  //
-  // const mockedPromise = new Promise((resolve, reject) => {
-  //   setTimeout(() => {
-  //     const src = 'https://raw.githubusercontent.com/vnglst/autoplay-tutorial/master/mp3/winamp.mp3'
-  //     return resolve(src)
-  //   }, 500)
-  // })
-  //
-  // btn.onclick = (e) => {
-  //   mockedPromise.then(src => {
-  //     audio.src = src
-  //     audio.play()
-  //   })
-  // }
-
-  //  SLIDER FRONT PAGE
-  // var slideIndex = 0
-  //
-  // function carousel() {
-  //   var x = document.getElementsByClassName("mySlides")
-  //   if(x){
-  //     for (var i = 0  i < x.length  i++) {
-  //       x[i].style.display = "none"
-  //     }
-  //     slideIndex++
-  //     if (slideIndex > x.length) {
-  //       slideIndex = 1
-  //     }
-  //     x[slideIndex-1].style.display = "block"
-  //     setTimeout(carousel, 2500)
-  //   }
-  // }
-  // carousel()
 }
 
 
@@ -174,3 +85,95 @@ window.onclick = function(e) {
     }
   }
 }
+
+// MOVE ROTATING IMAGE
+var divImg = document.getElementById('rotate-img')
+var mousePosition
+var offset = [0,0]
+var isDown = false
+
+function moveElement(input){
+  if(input){
+    input.addEventListener('mousedown', function(e) {
+      console.log("MOUSE DOWN")
+      isDown = true
+      offset = [
+        input.offsetLeft - e.clientX,
+        input.offsetTop - e.clientY
+      ]
+    }, true)
+
+    divImg.addEventListener('mouseup', function() {
+      console.log("MOUSE UP")
+      isDown = false
+    }, true)
+
+    divImg.addEventListener('mousemove', function(e) {
+      e.preventDefault()
+      if (isDown) {
+        mousePosition = {
+          x : e.clientX,
+          y : e.clientY
+        }
+        input.style.left = (mousePosition.x + offset[0]) + 'px'
+        input.style.top  = (mousePosition.y + offset[1]) + 'px'
+      }
+    }, true)
+  } else {
+    console.log("Not moving element")
+  }
+}
+moveElement(divImg)
+
+
+
+
+// var promise = document.querySelector('audio').play()
+// if (promise !== undefined) {
+//   promise.catch(function(error){
+//     console.log("AUDIO AUTOPLAY WAS PREVENTED")
+//       // Auto-play was prevented
+//       // Show a UI element to let the user manually start playback
+//   }).then(function(){
+//       // Auto-play started
+//       console.log("WHAT NOW?")
+//       // SAFARI.play()
+//   })
+// }
+
+// const audio = new window.Audio()
+// audio.src =
+//   'https://raw.githubusercontent.com/vnglst/autoplay-tutorial/master/mp3/modem-sound.mp3'
+//
+// const mockedPromise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     const src = 'https://raw.githubusercontent.com/vnglst/autoplay-tutorial/master/mp3/winamp.mp3'
+//     return resolve(src)
+//   }, 500)
+// })
+//
+// btn.onclick = (e) => {
+//   mockedPromise.then(src => {
+//     audio.src = src
+//     audio.play()
+//   })
+// }
+
+//  SLIDER FRONT PAGE
+// var slideIndex = 0
+//
+// function carousel() {
+//   var x = document.getElementsByClassName("mySlides")
+//   if(x){
+//     for (var i = 0  i < x.length  i++) {
+//       x[i].style.display = "none"
+//     }
+//     slideIndex++
+//     if (slideIndex > x.length) {
+//       slideIndex = 1
+//     }
+//     x[slideIndex-1].style.display = "block"
+//     setTimeout(carousel, 2500)
+//   }
+// }
+// carousel()

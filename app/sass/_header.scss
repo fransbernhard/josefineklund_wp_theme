@@ -1,6 +1,5 @@
 #menu-primary-id, .menu-secondary-menu-container {
   position: fixed;
-  // background: pink;
   cursor: pointer;
   height: auto;
   right: 0px;
@@ -11,6 +10,7 @@
     font-size: 0.6rem;
     letter-spacing: 3px;
     display: flex;
+    background: pink;
   }
 }
 
@@ -48,7 +48,10 @@
     }
   }
   a:hover {
-    background: rgba(255,255,255,0.5)
+    background: rgba(246, 195, 203, 0.75);
+    @include respond-to(small) {
+      background: rgba(255,255,255,0.5)
+    }
   }
 }
 
