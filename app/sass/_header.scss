@@ -1,0 +1,100 @@
+#menu-primary-id, .menu-secondary-menu-container {
+  position: fixed;
+  background: pink;
+  cursor: pointer;
+  height: auto;
+  right: 0px;
+  bottom: 0px;
+  z-index: 2;
+  display: none;
+  @include respond-to(small) {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    display: flex;
+  }
+}
+
+.activeMenu {
+  display: flex!important;
+}
+
+#menu-primary-menu, #menu-secondary-menu {
+  padding: 0!important;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  flex-flow: column;
+}
+
+.menu-item {
+  width: 100%;
+  a {
+    font-size: 0.7rem;
+    font-family:"Montserrat", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: black;
+    padding: 1.5rem;
+    cursor: pointer;
+    @include flexCenterCenter;
+    background-color: pink;
+    transition: background-color 0.5s ease;
+    @include respond-to(small) {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+    }
+  }
+  a:hover {
+    background: rgba(255,255,255,0.3)
+  }
+}
+
+.container-menu {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px;
+}
+
+.menu-icon-container {
+  z-index: 14;
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 0px;
+  right: 0px;
+  @include respond-to(small) {
+    display: none;
+  }
+}
+
+.menu-icon {
+  padding: 0.7rem;
+  cursor: pointer;
+  background: fuchsia;
+}
+
+// .bar1, .bar2, .bar3 {
+//   width: 35px;
+//   height: 5px;
+//   background-color: black;
+//   margin: 6px 0;
+//   transition: 0.4s;
+// }
+//
+// .change {
+//   align-self: flex-start;
+// }
+//
+// .change .bar1 {
+//   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+//   transform: rotate(-45deg) translate(-9px, 6px);
+// }
+//
+// .change .bar2 {
+//   opacity: 0;
+// }
+//
+// .change .bar3 {
+//   -webkit-transform: rotate(45deg) translate(-8px, -8px);
+//   transform: rotate(45deg) translate(-8px, -8px);
+// }

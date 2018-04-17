@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+.logo {
+  position: fixed;
+  font-size: 2rem;
+  text-transform: uppercase;
+  z-index: 10;
+  color: yellow;
+  padding: 1rem;
+  cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+}
+
+// .logo-slide {
+//   animation: 1s ease-out 0s 1 slideInFromLeft;
+// }
+
+.container {
+  @include flexCenterCenter;
+  flex-flow: column;
+  width: $fullWidthVp;
+  min-height: $fullHeightVp;
+}
+
+.wrapper {
+  max-width: $wrapper;
+}
+
+.home-img {
+  min-width: $fullWidthVp;
+  min-height: $fullHeightVp;
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  background: url('../img/b.jpg');
+  @include bg;
+  // animation: 2s ease-out 0s 1 slideInFromTop; //duration, timing-function (slow end), , delay, iteration, keyframe
+}
+
+// SECOND SECTION
+#insta {
+  display: flex;
+  max-width: $wrapper;
+  flex-wrap: wrap;
+}
+
+.insta-post {
+  @include bg;
+  width: 150px;
+  height: 150px;
+  margin: 0.2rem;
+}
+
+#instagram {
+  min-height: $fullHeightVp;
+  background: yellow;
+  @include flexCenterCenter;
+  flex-flow: column;
+  width: 100%;
+}
+
+#rotate {
+  background: #FF83FA;
+  top: 400px;
+  z-index: 10;
+  left: 10px;
+  position: fixed;
+  display: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  animation: rotating 10s linear infinite;
+  @include respond-to(small) {
+    width: 150px;
+    height: 150px;
+    @include flexCenterCenter;
+  }
+}
+
+#rotate-img {
+  right: 0px;
+  z-index: 100;
+  cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  @include flexCenterCenter;
+  border-radius: 50%;
+  animation: 1.5s ease-out 0s 1 slideInFromBottom, rotatingBack 20s linear 2s infinite;
+  @include respond-to(small) {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+// AUDIO
+
+// safari
+audio {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  display: none;
+}
+
+// other browsers
+#mep_0 {
+  display: none;
+  flex-flow: column;
+  max-width: 75px;
+  position: fixed;
+  bottom: 0px;
+  @include respond-to(small) {
+    max-width: 140px;
+  }
+}
+
+.mejs-controls a.mejs-horizontal-volume-slider {
+  display: none!important;
+  @include respond-to(small) {
+    display: table!important;
+  }
+}
+
+.mejs-container, .mejs-container .mejs-controls, .mejs-embed, .mejs-embed body {
+  border-radius: 0px 7px 0px 0px;
+}
+
+.mejs-time, .mejs-currenttime-container, .mejs-time-rail {
+  display: none;
+}
+
+// THIRD SECTION
+.about {
+  height: $fullHeightVp;
+  width: $fullWidthVp;
+  background: #F5EEF8;
+  @include flexCenterCenter;
+  flex-flow: column;
+}
+
+.banana {
+  column-count: 1;
+  max-width: $wrapper;
+  @include respond-to(small) {
+    column-count: 2;
+  }
+}
