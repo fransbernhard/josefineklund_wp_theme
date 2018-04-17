@@ -146,21 +146,31 @@ function clicky(URL){
 
 // RESPONSIVE MENU
 var menuPrimary = document.getElementById("menu-primary-id")
+var secondaryMenu = document.getElementById('menu-secondary-id')
+var menuIcon = document.getElementById("menu-icon")
 
-function menuFunction(){
-  var menuIcon = document.getElementById("menu-icon")
-  if (menuPrimary.classList.contains("activeMenu")) {
-    menuPrimary.classList.remove("activeMenu")
-  } else {
-    menuPrimary.classList.add("activeMenu")
+document.addEventListener('click', function (e) {
+  if ( e.target.classList.contains('bar') ) {
+      if (menuPrimary.classList.contains("activeMenu") ) {
+        menuPrimary.classList.remove("activeMenu")
+      } else {
+        menuPrimary.classList.add("activeMenu")
+      }
+
+      if (menuIcon.classList.contains("open")) {
+        menuIcon.classList.remove("open")
+      } else {
+        menuIcon.classList.add("open")
+      }
   }
-}
+}, false);
 
 // CLOSE MENU ON CLICK
 window.onclick = function(e) {
-  if (!e.target.matches('#menu-icon')) {
+  if (!e.target.classList.contains('bar')) {
     if (menuPrimary.classList.contains('activeMenu')) {
-      menuPrimary.classList.remove('activeMenu');
+      menuPrimary.classList.remove('activeMenu')
+      menuIcon.classList.remove("open")
     }
   }
 }

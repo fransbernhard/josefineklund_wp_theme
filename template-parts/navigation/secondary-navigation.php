@@ -12,14 +12,16 @@
 
  <a class="logo font-effect-fire-animation second-logo" href="<?php bloginfo('url'); ?>">Josefin Eklund</a>
 
- <!-- <div class="container-menu change" onClick=>
-   <div className="bar1"></div>
-   <div className="bar2"></div>
-   <div className="bar3"></div>
-</div> -->
+<div class="menu-icon-container" id="menu-icon">
+ <span class="bar"></span>
+ <span class="bar"></span>
+ <span class="bar"></span>
+</div>
+
 <?php
   $args = array(
-    'theme_location' => 'secondary'
+    'theme_location' => 'secondary',
+    'container_id' => 'menu-secondary-id'
   );
   wp_nav_menu( $args );
 ?>

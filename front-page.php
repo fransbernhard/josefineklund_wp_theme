@@ -33,7 +33,7 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 		<div class="about" id="about">
 			<p class="banana">
 				I have a passion and fascination for electronic art and neon light. Inspired by plastic, water reflections and liquids, I started playing with neon lights, first digitally and later by making my own creations with crossing tubes of neon light. After some time in both Berlin and Gothenburg, I’m ready for new collaborations.
-				<br/><br/><br/>
+				<br/>
 				What can I do for you? <br/>
 				– Rental of my neon objects<br/>
 				– Custom design of neon objects for your studio/reception/event/store<br/>
