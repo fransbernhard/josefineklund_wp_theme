@@ -10,7 +10,7 @@
  * @version 1.2
  */?>
 
- <a class="logo font-effect-fire-animation second-logo" href="<?php bloginfo('url'); ?>">Josefin Eklund</a>
+ <a class="logo font-effect-fire-animation" href="<?php bloginfo('url'); ?>">Josefin Eklund</a>
 
 <div class="menu-icon-container" id="menu-icon">
  <span class="bar"></span>

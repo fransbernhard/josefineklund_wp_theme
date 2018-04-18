@@ -32,16 +32,20 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 
 		<div class="about" id="about">
 			<p class="banana">
+				Who am I? <br/><br/>
 				I have a passion and fascination for electronic art and neon light. Inspired by plastic, water reflections and liquids, I started playing with neon lights, first digitally and later by making my own creations with crossing tubes of neon light. After some time in both Berlin and Gothenburg, I’m ready for new collaborations.
-				<br/>
-				What can I do for you? <br/>
+				<br/><br/><br/><br/>
+
+				What can I do for you? <br/><br/>
 				– Rental of my neon objects<br/>
 				– Custom design of neon objects for your studio/reception/event/store<br/>
 				– Light design or light planning for your event<br/>
 				– Album covers (digital and print)<br/>
 				– Give you ideas in general for your showcase or event in order to make it exciting and stimulating
+				<br/><br/>
+				<a class="neon font-effect-neon" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
 			</p>
-			<a href="mailto:someone@example.com?Subject=Hello%20dolphin%20love" target="_top">Mejla mig</a>
+
 		</div>
 
 	</div>

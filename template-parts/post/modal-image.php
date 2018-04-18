@@ -17,7 +17,10 @@
   <span class="close">&times;</span>
   <img class="modal-content" id="img">
   <div id="caption">
-    <h3><?php the_title();?></h3>
-    <p><?php the_content();?></p>
+    <div class="">
+      <h3><?php the_title();?></h3>
+      <p><?php the_content();?></p>
+    </div>
+    <a></a>
   </div>
 </div>

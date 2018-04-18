@@ -1,3 +1,18 @@
+
+.logo {
+  position: fixed;
+  font-size: 2rem;
+  text-transform: uppercase;
+  z-index: 10;
+  color: yellow;
+  padding: 1rem;
+  cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+}
+
+// .logo-slide {
+//   animation: 1s ease-out 0s 1 slideInFromLeft;
+// }
+
 #menu-primary-id, .menu-secondary-menu-container {
   position: fixed;
   cursor: pointer;
@@ -24,10 +39,11 @@
   align-items: center;
   margin: 0;
   flex-flow: column;
+  z-index: 2000000;
 }
 
 .menu-item {
-  width: 100%;
+  width: $fullSizePercent;
   a {
     font-size: 0.7rem;
     width: 100vw;
@@ -35,7 +51,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     color: black;
-    padding: 1.5rem;
+    padding: 3rem;
     cursor: pointer;
     @include flexCenterCenter;
     background-color: rgba(246, 195, 203, 0.95);
@@ -45,6 +61,7 @@
       width: auto;
       font-size: 0.6rem;
       letter-spacing: 3px;
+      padding: 1.5rem;
     }
   }
   a:hover {

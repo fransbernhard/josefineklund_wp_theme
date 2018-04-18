@@ -1,53 +1,63 @@
 var $ =  jQuery
-var token = 'xxx',
-userid = "xxx",
+
 num_photos = 30
 
 window.onload = function init(){
 
   // GET INSTAGRAM POSTS
-  $.ajax({
-   url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent',
-   dataType: 'jsonp',
-   type: 'GET',
-   data: {access_token: token, count: num_photos},
-   success: function(data){
-     console.log(data)
-     for( x in data.data ){
-       $('#insta').append('<li class="insta-post" style="background-image: url('+data.data[x].images.low_resolution.url+'"></li>')
+  if(location.pathname == "/jose2/"){
+    console.log("YOU ARE AT ROOT");
+    $.ajax({
+     url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent',
+     dataType: 'jsonp',
+     type: 'GET',
+     data: {access_token: token, count: num_photos},
+     success: function(data){
+       console.log(data)
+       for( x in data.data ){
+         $('#insta').append('<li class="insta-post" style="background-image: url('+data.data[x].images.low_resolution.url+'"></li>')
+       }
+     },
+     error: function(err){
+       console.log(err)
      }
-   },
-   error: function(err){
-     console.log(err)
-   }
-  })
+    })
 
-  // CHECK BROWSER FOR AUDIO
-  var isSafari = window.safari !== undefined
-  var SAFARI = document.getElementById("safariAudio")
-  var OTHER_BROWSER = document.getElementById("mep_0")
-  if (isSafari) {
-    console.log("YES YOU ARE SAFARI")
-    SAFARI.style.display="block"
-    OTHER_BROWSER.style.display="none"
+    // CHECK BROWSER FOR AUDIO
+    var isSafari = window.safari !== undefined
+    var SAFARI = document.getElementById("safariAudio")
+    var OTHER_BROWSER = document.getElementById("mep_0")
+    if (isSafari) {
+      console.log("YES YOU ARE SAFARI")
+      SAFARI.style.display="block"
+      OTHER_BROWSER.style.display="none"
+    } else {
+      console.log("NOT SAFARI")
+      SAFARI.style.display="none"
+      OTHER_BROWSER.style.display="block"
+    }
   } else {
-    console.log("NOT SAFARI")
-    SAFARI.style.display="none"
-    OTHER_BROWSER.style.display="block"
+    console.log("YOU ARE NOT AT ROOT");
   }
-
 }
 
-
 // MODAL IMAGE
-function clicky(URL){
+function openModal(URL, TITLE, CONTENT){
   var modal = document.getElementById('myModal')
 
   var modalImg = document.getElementById("img")
-  var captionText = document.getElementById("caption")
+  var caption = document.getElementById("caption")
+  var captionH3 = caption.getElementsByTagName('h3')[0]
+  var captionP = caption.getElementsByTagName('p')[0]
+  var captionA = caption.getElementsByTagName('a')[0]
 
   modal.style.display = "flex"
   modalImg.src = URL
+  captionH3.innerHTML = TITLE
+
+  var newTitle = encodeURIComponent(TITLE.trim())
+  captionA.href = "mailto:josefineklundmail@gmail.com?Subject=" + newTitle
+  captionA.innerHTML = "Email me about this art"
 
   var span = document.getElementsByClassName("close")[0]
   span.onclick = function() {
@@ -76,7 +86,7 @@ document.addEventListener('click', function (e) {
   }
 }, false);
 
-// CLOSE MENU ON CLICK
+// CLOSE MENU ON CLICK ANYWHERE
 window.onclick = function(e) {
   if (!e.target.classList.contains('bar')) {
     if (menuPrimary.classList.contains('activeMenu')) {
@@ -88,43 +98,42 @@ window.onclick = function(e) {
 
 // MOVE ROTATING IMAGE
 var divImg = document.getElementById('rotate-img')
-var mousePosition
-var offset = [0,0]
-var isDown = false
 
-function moveElement(input){
-  if(input){
-    input.addEventListener('mousedown', function(e) {
-      console.log("MOUSE DOWN")
+function moveElement(element){
+  var mousePosition
+  var offset = [0,0]
+  var isDown = false
+
+  if(element){
+    element.addEventListener('mousedown', function(e) {
       isDown = true
       offset = [
-        input.offsetLeft - e.clientX,
-        input.offsetTop - e.clientY
+        element.offsetLeft - e.clientX,
+        element.offsetTop - e.clientY
       ]
     }, true)
 
-    divImg.addEventListener('mouseup', function() {
+    element.addEventListener('mouseup', function() {
       console.log("MOUSE UP")
       isDown = false
     }, true)
 
-    divImg.addEventListener('mousemove', function(e) {
+    element.addEventListener('mousemove', function(e) {
       e.preventDefault()
       if (isDown) {
         mousePosition = {
           x : e.clientX,
           y : e.clientY
         }
-        input.style.left = (mousePosition.x + offset[0]) + 'px'
-        input.style.top  = (mousePosition.y + offset[1]) + 'px'
+        element.style.left = (mousePosition.x + offset[0]) + 'px'
+        element.style.top  = (mousePosition.y + offset[1]) + 'px'
       }
     }, true)
   } else {
-    console.log("Not moving element")
+    console.log("NOT MOVING ELEMENT")
   }
 }
 moveElement(divImg)
-
 
 
 

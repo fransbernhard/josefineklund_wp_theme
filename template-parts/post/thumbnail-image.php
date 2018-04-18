@@ -13,7 +13,10 @@
 
  ?>
 
-<div class="post" onclick="clicky('<?php echo $thumbnailBgImg[0] ?>')" title="<?php the_title_attribute(); ?>" >
+<div class="post"
+  onclick="openModal('<?php echo $thumbnailBgImg[0] ?>', '<?php the_title(); ?>', 'haha')"
+  title="<?php echo the_title_attribute(); ?>"
+>
   <div class="post-thumbnail" id="post-thumbnail" style="background-image: url('<?php echo $thumbnailBgImg[0]; ?>');"></div>
   <div class="post-content">
     <h3><?php the_title(); ?></h3>

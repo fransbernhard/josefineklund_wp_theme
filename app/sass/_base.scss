@@ -2,20 +2,6 @@
   box-sizing: border-box;
 }
 
-.logo {
-  position: fixed;
-  font-size: 2rem;
-  text-transform: uppercase;
-  z-index: 1000;
-  color: yellow;
-  padding: 1rem;
-  cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
-}
-
-// .logo-slide {
-//   animation: 1s ease-out 0s 1 slideInFromLeft;
-// }
-
 .container {
   @include flexCenterCenter;
   flex-flow: column;
@@ -56,7 +42,7 @@
   background: yellow;
   @include flexCenterCenter;
   flex-flow: column;
-  width: 100%;
+  width: $fullSizePercent;
 }
 
 #rotate {
@@ -78,7 +64,7 @@
 
 #rotate-img {
   right: 0px;
-  z-index: 100;
+  z-index: 9;
   cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
   position: fixed;
   width: 200px;
@@ -142,8 +128,12 @@ audio {
   text-align: left;
   column-count: 1;
   padding: 0rem 1rem;
-  max-width: $wrapper;
+  max-width: 600px;
   @include respond-to(small) {
     column-count: 2;
   }
+}
+
+.neon {
+  font-family: 'Montserrat', arial;
 }

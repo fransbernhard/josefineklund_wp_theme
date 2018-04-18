@@ -15,7 +15,7 @@
 // .single-wrapper {
 //   margin-top: 4rem;
 //   img {
-//     width: 100%;
+//     width: $fullSizePercent;
 //     height: auto;
 //   }
 // }
@@ -75,6 +75,7 @@
 // MODAL BOX
 .modal {
   display: none;
+  padding-top: 4rem;
   justify-content: center;
   align-items: center;
   flex-flow: column;
@@ -85,21 +86,33 @@
   min-width: $fullWidthVp;
   min-height: $fullHeightVp;
   overflow: auto;
-  // background-color: rgb(0,0,0);
   background: rgba(0,0,0,0.9);
 }
 
 // modal image
 .modal-content {
   display: block;
-  max-width: $wrapper;
+  max-width: $fullSizePercent;
+  max-height: 70vh;
+  @include respond-to(small) {
+    max-width: $wrapper;
+  }
 }
 
 #caption {
   max-width: $wrapper;
   text-align: left;
-  h3, p {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 1rem;
+  h3, p, a {
     color: #ccc;
+    font-size: 14px;
+    font-family: "Julius Sans One", arial, sans-serif;
+    line-height: auto;
+    padding: 0!important;
+    margin: 0!important;
   }
 }
 
