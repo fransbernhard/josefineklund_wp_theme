@@ -1,8 +1,14 @@
 .post-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-flow: column;
+}
+
+.art-posts {
   max-width: 1200px;
-  padding-top: 4rem;
+  padding: 7rem 0rem;
+  @include flexCenterCenter;
+  flex-wrap: wrap;
 }
 
 .thumbnail-single {
@@ -12,27 +18,25 @@
   margin: 0.5rem 0rem;
 }
 
-// .single-wrapper {
-//   margin-top: 4rem;
-//   img {
-//     width: $fullSizePercent;
-//     height: auto;
-//   }
-// }
+.post-container {
+  @include flexCenterCenter;
+}
 
-// HOVER
+// ON HOVER
+// post container
 .post {
+  position: relative;
   width: $fullWidthVp;
   height: 40vh;
   margin: 0.2rem;
   background: rgba(0,0,0,0.7);
-  position: relative;
   @include respond-to(small) {
     width: 250px;
     height: 250px;
   }
 }
 
+// post thumbnail image
 .post-thumbnail {
   @include bg;
   width: $fullWidthVp;
@@ -43,11 +47,11 @@
   }
 }
 
+// post content
 .post-content {
   position: absolute;
-  display: flex;
-  flex-flow: column;
-  @include flexCenterCenter;
+  cursor: pointer;
+  @include flexColumnCenterCenter;
   padding: 1rem;
   top: 0;
   bottom: 0;
@@ -56,10 +60,8 @@
   opacity: 0;
   transition: .5s ease;
   background-color: rgba(0,0,0,0.4);
-  cursor: pointer;
   h3, p {
     color: white;
-    font-family: 'Montserrat', sans-serif;
     text-align: center;
   }
 }
@@ -73,58 +75,62 @@
 }
 
 // MODAL BOX
+// modal container
 .modal {
+  position: fixed;
+  z-index: 26;
+  min-width: $fullWidthVp;
+  min-height: $fullHeightVp;
   display: none;
-  padding-top: 4rem;
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  position: fixed;
-  z-index: 15;
+  padding-top: 4rem;
   left: 0;
   top: 0;
-  min-width: $fullWidthVp;
-  min-height: $fullHeightVp;
   overflow: auto;
   background: rgba(0,0,0,0.9);
 }
 
 // modal image
 .modal-content {
-  display: block;
+  max-height: 75vh;
   max-width: $fullSizePercent;
-  max-height: 70vh;
-  @include respond-to(small) {
-    max-width: $wrapper;
-  }
 }
 
 #caption {
-  max-width: $wrapper;
-  text-align: left;
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+  @include flexCenterCenter;
   margin-top: 1rem;
   h3, p, a {
     color: #ccc;
     font-size: 14px;
-    font-family: "Julius Sans One", arial, sans-serif;
-    line-height: auto;
     padding: 0!important;
     margin: 0!important;
+  }
+
+  .caption-text {
+    padding: 0rem 1rem;
+    border-right: 1px solid fuchsia;
+  }
+
+  a {
+    padding: 1rem!important;
   }
 }
 
 // CLOSE MODAL BTN
 .close {
   position: absolute;
-  top: 15px;
-  right: 35px;
+  top: 6rem;
+  right: 0;
   color: #f1f1f1;
-  font-size: 40px;
+  font-size: 5rem;
   font-weight: bold;
   transition: 0.3s;
+  @include respond-to(small) {
+    top: 15px;
+    right: 15px;
+  }
 }
 
 .close:hover,
@@ -132,4 +138,24 @@
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modal-box {
+  display: flex;
+  align-items: center;
+}
+
+// MODAL BOX ARROWS
+.arrow {
+  display: none;
+  padding: 1rem;
+  background: fuchsia;
+  cursor: pointer;
+  @include respond-to(small) {
+    display: block;
+  }
+}
+
+.arrow:active {
+  background: pink;
 }

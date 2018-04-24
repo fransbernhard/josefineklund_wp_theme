@@ -5,51 +5,140 @@ get_header();
 get_template_part( 'template-parts/navigation/navigation' ); ?>
 
 <main id="main" class="container" role="main">
-	<div class="wrapper">
-		<a id="banan" target="_blank" href="https://www.instagram.com/josefiineklund/">
-			<div class="rotating rotate" id="rotate">
-				<h3>Instagram</h3>
-			</div>
-		</a>
+	<div class="background-img"></div>
 
-		<?php if ( has_post_thumbnail() ) {
-			$homeImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
-			<img id="rotate-img" class="rotating-back rotate" src="<?php echo $homeImg[0] ?>"></div>
-		<?php } ?>
-
-		<!-- IMAGE SCREENSHOT FROM AMAZING VADEOMAKER = LOROCROM @ https://vimeo.com/243208219 -->
-		<div class="first-section home-img">
-			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-				<?php
-	       	the_content();
-				?>
-	    <?php endwhile; endif; ?>
+	<a href="#instagram">
+		<div class="rotating rotate" id="rotate">
+			<h3>Instagram</h3>
 		</div>
+	</a>
 
-		<div id="instagram">
-			<ul id="insta"></ul>
-		</div>
-
-		<div class="about" id="about">
-			<p class="banana">
-				Who am I? <br/><br/>
-				I have a passion and fascination for electronic art and neon light. Inspired by plastic, water reflections and liquids, I started playing with neon lights, first digitally and later by making my own creations with crossing tubes of neon light. After some time in both Berlin and Gothenburg, I’m ready for new collaborations.
-				<br/><br/><br/><br/>
-
-				What can I do for you? <br/><br/>
-				– Rental of my neon objects<br/>
-				– Custom design of neon objects for your studio/reception/event/store<br/>
-				– Light design or light planning for your event<br/>
-				– Album covers (digital and print)<br/>
-				– Give you ideas in general for your showcase or event in order to make it exciting and stimulating
-				<br/><br/>
-				<a class="neon font-effect-neon" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
-			</p>
-
-		</div>
-
+	<div class="projects-container">
+		<a id="projects-img" class="projects" href="#projects">Projects</a>
 	</div>
 
+	<?php if ( has_post_thumbnail() ) {
+		$homeImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
+		<img id="rotate-img" class="rotating-back rotate" src="<?php echo $homeImg[0] ?>">
+	<?php } ?>
+
+	<!-- IMAGE SCREENSHOT FROM AMAZING VADEOMAKER = LOROCROM @ https://vimeo.com/243208219 -->
+	<div class="first-section" id="home">
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+       	the_content();
+		endwhile; endif; ?>
+	</div>
+
+	<div id="instagram">
+		<ul id="insta"></ul>
+	</div>
+
+	<div class="allProjects" id="projects">
+		<div class="projects-wrapper">
+			<h3>2018</h3>
+			<ul>
+				<?php
+				$args = array (
+					'post_type' => 'projects_post',
+					'order'=> 'ASC',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category',
+							'field'    => 'slug',
+							'terms'    => array( '2018' )
+						)
+					)
+				);
+
+				$query1 = new WP_Query( $args );
+
+				if ( $query1->have_posts() ) {
+					while ( $query1->have_posts() ) {
+						$query1->the_post(); ?>
+						<li class="project-item">
+							<p><span><?php the_title(); ?></span> | <?php the_content(); ?></p>
+						</li>
+					<?php }
+					wp_reset_postdata();
+				} ?>
+			</ul>
+
+			<h3>2017</h3>
+			<ul> <?php
+				$args2 = array (
+					'post_type' => 'projects_post',
+					'order'=> 'ASC',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category',
+							'field'    => 'slug',
+							'terms'    => array( '2017' )
+						)
+					)
+				);
+				$query2 = new WP_Query( $args2 );
+				if ( $query2->have_posts() ) {
+					while ( $query2->have_posts() ) {
+						$query2->the_post(); ?>
+						<li class="project-item">
+							<p><span><?php the_title(); ?></span> | <?php the_content(); ?></p>
+						</li>
+					<?php }
+					wp_reset_postdata();
+				}
+
+				?>
+			</ul>
+
+			<h3>2016</h3>
+			<ul> <?php
+				$args3 = array (
+					'post_type' => 'projects_post',
+					'order'=> 'ASC',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category',
+							'field'    => 'slug',
+							'terms'    => array( '2016' )
+						)
+					)
+				);
+				$query3 = new WP_Query( $args3 );
+				if ( $query3->have_posts() ) {
+					while ( $query3->have_posts() ) {
+						$query3->the_post(); ?>
+						<li class="project-item">
+							<p><span><?php the_title(); ?></span> | <?php the_content(); ?></p>
+						</li>
+					<?php }
+					wp_reset_postdata();
+				}
+
+				?>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="about" id="about">
+		<div class="about-wrapper">
+
+			<?php
+        $args = array(
+					'post_type' => 'about_post',
+					'posts_per_page' => 5,
+					'order' => "ASC"
+				);
+        $loop = new WP_Query( $args );
+        while ( $loop->have_posts() ) : $loop->the_post();
+          get_template_part( 'template-parts/post/content' );
+        endwhile;
+      ?>
+			<a class="neon font-effect-neon" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
+
+
+		</div>
+	</div>
 </main>
 
 <?php get_footer();

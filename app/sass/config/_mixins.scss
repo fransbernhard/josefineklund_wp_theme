@@ -1,6 +1,6 @@
 // Mixins for flexbox styling
 
-@mixin flexColumn-mixin {
+@mixin flexColumn {
   display: flex;
   flex-flow: column;
 }

@@ -2,74 +2,60 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 .container {
-  @include flexCenterCenter;
-  flex-flow: column;
   width: $fullWidthVp;
-  min-height: $fullHeightVp;
 }
 
-.wrapper {
-  max-width: $wrapper;
-}
-
-.home-img {
-  min-width: $fullWidthVp;
-  min-height: $fullHeightVp;
-  font-size: 0.9rem;
-  letter-spacing: 4px;
-  background: url('../img/b.jpg');
-  @include bg;
-  // animation: 2s ease-out 0s 1 slideInFromTop; //duration, timing-function (slow end), , delay, iteration, keyframe
-}
-
-// SECOND SECTION
-#insta {
-  display: flex;
-  max-width: $wrapper;
-  flex-wrap: wrap;
-}
-
-.insta-post {
-  @include bg;
-  width: 150px;
-  height: 150px;
-  margin: 0.2rem;
-}
-
-#instagram {
-  min-height: $fullHeightVp;
-  background: yellow;
+.wrong-container {
+  width: $fullWidthVp;
   @include flexCenterCenter;
-  flex-flow: column;
-  width: $fullSizePercent;
+  min-height: 100vh;
+  background: fuchsia;
+}
+
+.wrong-wrapper {
+  max-width: $wrapper;
+  @include flexCenterCenter;
+}
+
+.background-img {
+  z-index: -1;
+  position: fixed;
+  width: $fullWidthVp;
+  height: $fullHeightVp;
+  background: url('../img/b.jpg') no-repeat top center scroll;
+  background-size: cover;
 }
 
 #rotate {
-  background: #FF83FA;
-  top: 400px;
   z-index: 10;
-  left: 10px;
-  position: fixed;
   display: none;
+  width: 150px;
+  height: 150px;
+  position: fixed;
+  background: #FF83FA;
+  top: 45%;
+  left: 0.5rem;
   padding: 0.5rem;
   border-radius: 50%;
   animation: rotating 10s linear infinite;
   @include respond-to(small) {
-    width: 150px;
-    height: 150px;
     @include flexCenterCenter;
   }
 }
 
 #rotate-img {
-  right: 0px;
-  z-index: 9;
-  cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+  z-index: 11;
   position: fixed;
-  width: 200px;
-  height: 200px;
   @include flexCenterCenter;
+  right: 0px;
+  cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   animation: 1.5s ease-out 0s 1 slideInFromBottom, rotatingBack 20s linear 2s infinite;
   @include respond-to(small) {
@@ -78,22 +64,70 @@
   }
 }
 
-// AUDIO
+.first-section {
+  width: $fullWidthVp;
+  min-height: $fullHeightVp;
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+}
 
+// SECOND SECTION
+#insta {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: $wrapper;
+
+}
+
+.insta-post {
+  display: flex;
+  @include bg;
+  width: 150px;
+  height: 150px;
+  margin: 0.2rem;
+}
+
+#instagram {
+  background: yellow;
+  min-height: $fullHeightVp;
+}
+
+#instagram, .about {
+  width: $fullWidthVp;
+  @include flexColumnCenterCenter;
+}
+
+.about {
+  background: #69b4ff;
+  min-height: 60vh;
+}
+
+.about-wrapper {
+  min-height: 50vh;
+  max-width: 640px;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  padding: 1rem;
+  @include respond-to(small) {
+    padding: 0rem;
+  }
+}
+
+// AUDIO
 // safari
 audio {
   position: fixed;
-  bottom: 0px;
-  left: 0;
   display: none;
+  bottom: 0px;
 }
 
 // other browsers
 #mep_0 {
   display: none;
-  flex-flow: column;
-  max-width: 75px;
   position: fixed;
+  flex-flow: column;
+  max-width: 90px;
   bottom: 0px;
   @include respond-to(small) {
     max-width: 140px;
@@ -113,27 +147,4 @@ audio {
 
 .mejs-time, .mejs-currenttime-container, .mejs-time-rail {
   display: none;
-}
-
-// THIRD SECTION
-.about {
-  height: $fullHeightVp;
-  width: $fullWidthVp;
-  background: #F5EEF8;
-  @include flexCenterCenter;
-  flex-flow: column;
-}
-
-.banana {
-  text-align: left;
-  column-count: 1;
-  padding: 0rem 1rem;
-  max-width: 600px;
-  @include respond-to(small) {
-    column-count: 2;
-  }
-}
-
-.neon {
-  font-family: 'Montserrat', arial;
 }

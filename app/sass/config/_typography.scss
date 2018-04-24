@@ -1,5 +1,9 @@
 * {
   color: black;
+  font-family: 'Montserrat', serif, arial;
+}
+
+.logo, .rotate h3, .projects  {
   font-family: 'Syncopate', serif, arial;
 }
 
@@ -28,14 +32,25 @@ h2 {
 }
 
 h3 {
+  font-size: 0.9rem;
+}
+
+h3, .projects {
   letter-spacing: 1px;
   font-size: 0.9rem;
   text-transform: uppercase;
 }
 
+h5 {
+  margin: 0;
+}
+
+.projects {
+  font-size: 0.7rem;
+}
+
 .about {
   p {
-    font-family: "Montserrat", arial, sans-serif;
     line-height: 20px;
   }
 }

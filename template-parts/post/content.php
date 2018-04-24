@@ -10,7 +10,7 @@
  * @version 1.2
  */?>
 
-<div class="music-post">
-  <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-  <?php the_content(); ?>
+<div class="about-post">
+  <h3><?php the_title(); ?></h3>
+  <p><?php the_content(); ?></p>
 </div>

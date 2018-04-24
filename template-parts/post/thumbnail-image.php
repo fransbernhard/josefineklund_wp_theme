@@ -14,12 +14,12 @@
  ?>
 
 <div class="post"
-  onclick="openModal('<?php echo $thumbnailBgImg[0] ?>', '<?php the_title(); ?>', 'haha')"
+  onclick="openModal('<?php echo $thumbnailBgImg[0] ?>', '<?php the_title(); ?>', '<?php echo $post->ID ?>', '<?php get_post_field('post_content', $post->ID) ?>' )"
   title="<?php echo the_title_attribute(); ?>"
 >
   <div class="post-thumbnail" id="post-thumbnail" style="background-image: url('<?php echo $thumbnailBgImg[0]; ?>');"></div>
   <div class="post-content">
-    <h3><?php the_title(); ?></h3>
-    <p><?php the_content(); ?></p>
+    <h3 id="thumbnail-h3"><?php the_title(); ?></h3>
+    <p id="thumbnail-p"><?php the_content(); ?></p>
   </div>
 </div>

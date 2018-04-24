@@ -2,17 +2,27 @@
 
 get_template_part( 'template-parts/navigation/secondary-navigation' );?>
 
-<div class="container">
+<div class="post-container">
   <div class="post-wrapper">
 
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-      <?php if ( has_post_thumbnail() ) : ?>
-        <?php
-        get_template_part( 'template-parts/post/thumbnail-image' );
-        get_template_part( 'template-parts/post/modal-image' );
+    <div class="art-posts" id="art">
+      <?php $postArray = [];
 
-      endif; ?>
-    <?php endwhile; endif; ?>
+        if ( have_posts() ) : while ( have_posts() ) : the_post();
+          array_push($postArray, $post->ID);
+
+          if ( has_post_thumbnail() ) : ?>
+            <?php
+            get_template_part( 'template-parts/post/thumbnail-image' );
+            get_template_part( 'template-parts/post/modal-image' );
+
+          endif; ?>
+        <?php endwhile; endif;
+
+        echo "<script>console.log( 'Debug Objects: " . join(', ', $postArray) . "' );</script>";
+
+      ?>
+    </div>
   </div>
 </div>
 

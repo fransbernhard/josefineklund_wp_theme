@@ -1,5 +1,35 @@
 <?php
 
+  // Add custom Post Type film_post
+  function create_post_type() {
+    register_post_type( 'about_post',
+      array(
+        'supports' => array( 'thumbnail', 'title', 'post-formats', 'editor', 'category'),
+        'labels' => array(
+          'name' => __( 'Abouts' ),
+          'singular_name' => __( 'About' )
+        ),
+        'public' => true,
+        'has_archive' => false,
+      )
+    );
+
+    register_post_type( 'projects_post',
+      array(
+        'supports' => array( 'thumbnail', 'title', 'post-formats', 'editor', 'category'),
+        'labels' => array(
+          'name' => __( 'Projects' ),
+          'singular_name' => __( 'Project' )
+        ),
+        'taxonomies' => array( 'category' ),
+        'public' => true,
+        'has_archive' => false,
+      )
+    );
+    flush_rewrite_rules( false );
+  }
+  add_action( 'init', 'create_post_type' );
+
   function my_theme_enqueue_scripts(){
     wp_enqueue_style( 'hip-style', get_template_directory_uri() . '/dist/css/style.css' );
     wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/dist/js/jose2.min.js', array('jquery'), 1, true );

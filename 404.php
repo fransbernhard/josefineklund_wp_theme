@@ -12,10 +12,10 @@
 
 get_header();
 
-get_template_part( 'template-parts/navigation/navigation' );?>
+get_template_part( 'template-parts/navigation/secondary-navigation' );?>
 
-<main class="container" role="main">
-	<div class="wrapper single-wrapper">
+<main class="wrong-container" role="main">
+	<div class="wrong-wrapper">
 		<h1>DOES NOT EXIST!</h1>
 	</div>
 </main>
