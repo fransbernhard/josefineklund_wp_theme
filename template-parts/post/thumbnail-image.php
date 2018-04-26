@@ -9,6 +9,7 @@
  * @since 1.0
  * @version 1.2
  */
+
   $thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');
 
  ?>

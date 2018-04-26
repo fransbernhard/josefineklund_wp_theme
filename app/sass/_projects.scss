@@ -9,6 +9,20 @@
   @include flexColumnCenterCenter;
 }
 
+.projects-wrapper {
+  max-width: $wrapper;
+  background: rgba(246, 195, 203, 0.90);
+  border-radius: 1rem;
+  padding: 1rem;
+  ul {
+    padding: 0px;
+    margin: 0px;
+  }
+  h3 {
+    margin-bottom: 0!important;
+  }
+}
+
 .project-item {
   display: flex;
   align-items: center;
@@ -16,32 +30,14 @@
     margin: 0.3rem 0;
     font-size: 11px;
   }
-
   span {
     font-style: italic;
   }
 }
 
-.projects-wrapper {
-  ul {
-    padding: 0px;
-    margin: 0px;
-  }
-
-  h3 {
-    margin-bottom: 0!important;
-  }
-
-  max-width: $wrapper;
-  background: rgba(246, 195, 203, 0.90);
-  border-radius: 1rem;
-  padding: 1rem;
-}
-
 // PROJECTS ROTATING IMG
 .projects {
   position: fixed;
-  z-index: 1;
   left: 0rem;
   top: 10%;
   background: #69b4ff;

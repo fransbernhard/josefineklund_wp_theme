@@ -12,7 +12,7 @@
 
 get_header();
 
-get_template_part( 'template-parts/navigation/secondary-navigation' );?>
+get_template_part( 'template-parts/navigation/navigation' );?>
 
 <main class="container" role="main">
 	<div class="wrapper single-wrapper">

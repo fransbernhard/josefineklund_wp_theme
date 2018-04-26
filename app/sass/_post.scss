@@ -1,34 +1,22 @@
-.post-wrapper {
-  display: flex;
-  align-items: center;
-  flex-flow: column;
+.post-container {
+  min-height: 100vh;
+  @include flexCenterCenter;
 }
 
-.art-posts {
+.post-wrapper {
   max-width: 1200px;
   padding: 7rem 0rem;
   @include flexCenterCenter;
   flex-wrap: wrap;
 }
 
-.thumbnail-single {
-  @include bg;
-  width: $wrapper;
-  height: 500px;
-  margin: 0.5rem 0rem;
-}
-
-.post-container {
-  @include flexCenterCenter;
-}
-
 // ON HOVER
-// post container
 .post {
   position: relative;
   width: $fullWidthVp;
   height: 40vh;
   margin: 0.2rem;
+  cursor: pointer;
   background: rgba(0,0,0,0.7);
   @include respond-to(small) {
     width: 250px;
@@ -38,6 +26,7 @@
 
 // post thumbnail image
 .post-thumbnail {
+  position: relative;
   @include bg;
   width: $fullWidthVp;
   height: 40vh;
@@ -78,7 +67,6 @@
 // modal container
 .modal {
   position: fixed;
-  z-index: 26;
   min-width: $fullWidthVp;
   min-height: $fullHeightVp;
   display: none;
@@ -143,19 +131,4 @@
 .modal-box {
   display: flex;
   align-items: center;
-}
-
-// MODAL BOX ARROWS
-.arrow {
-  display: none;
-  padding: 1rem;
-  background: fuchsia;
-  cursor: pointer;
-  @include respond-to(small) {
-    display: block;
-  }
-}
-
-.arrow:active {
-  background: pink;
 }

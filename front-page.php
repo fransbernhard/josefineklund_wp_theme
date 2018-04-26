@@ -85,9 +85,7 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 						</li>
 					<?php }
 					wp_reset_postdata();
-				}
-
-				?>
+				} ?>
 			</ul>
 
 			<h3>2016</h3>
@@ -112,33 +110,64 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 						</li>
 					<?php }
 					wp_reset_postdata();
-				}
-
-				?>
+				} ?>
 			</ul>
 		</div>
 	</div>
 
+	<div class="post-container" id="art">
+	  <div class="post-wrapper">
+      <?php
+				$postArgs = array (
+					'post_type' => 'post',
+					'order'=> 'ASC',
+					'posts_per_page' => 20,
+				);
+				$the_query = new WP_Query( $postArgs );
+        if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();
+          if ( has_post_thumbnail() ) :
+            $thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');?>
+
+            <div
+              class="post" onclick="openModal('<?php echo $thumbnailBgImg[0] ?>', '<?php the_title(); ?>', '<?php echo $post->ID ?>', '<?php echo the_content() ?>')"
+              title="<?php echo the_title_attribute(); ?>"
+            >
+              <div
+                class="post-thumbnail"
+                id="post-thumbnail"
+                style="background-image: url('<?php echo $thumbnailBgImg[0]; ?>');"
+              ></div>
+              <div class="post-content">
+                <h3 id="thumbnail-h3"><?php the_title(); ?></h3>
+                <p id="thumbnail-p"><?php the_content(); ?></p>
+              </div>
+            </div>
+
+            <?php get_template_part( 'template-parts/post/modal-image' );
+          endif;
+        endwhile;
+        endif;
+      ?>
+	  </div>
+	</div>
 
 	<div class="about" id="about">
 		<div class="about-wrapper">
-
 			<?php
-        $args = array(
+				$args = array(
 					'post_type' => 'about_post',
 					'posts_per_page' => 5,
 					'order' => "ASC"
 				);
-        $loop = new WP_Query( $args );
-        while ( $loop->have_posts() ) : $loop->the_post();
-          get_template_part( 'template-parts/post/content' );
-        endwhile;
-      ?>
+				$loop = new WP_Query( $args );
+				while ( $loop->have_posts() ) : $loop->the_post();
+					get_template_part( 'template-parts/post/content' );
+				endwhile;
+			?>
 			<a class="neon font-effect-neon" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
-
-
 		</div>
 	</div>
+
 </main>
 
 <?php get_footer();
