@@ -21,6 +21,9 @@ var reload = browserSync.reaload;
 var imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache');
 
+const concat = require('gulp-concat');
+const babel = require('gulp-babel');
+
 // Internal config, folder structure
 var paths = {
     style: {
@@ -55,11 +58,14 @@ gulp.task('images', function(){
 
 gulp.task('js', function() {
     gulp.src(paths.script.source)
+      .pipe(babel({
+        presets: ['env']
+      }))
       .pipe(uglify('jose2.min.js'))
       .pipe(gulp.dest(paths.script.destination))
       .pipe(browserSync.reload({
-            stream: true
-        }));
+        stream: true
+      }));
 });
 
 try {
@@ -68,9 +74,9 @@ try {
           .src(paths.style.source + 'style.scss')
           .pipe(plumber())
           .pipe(sourcemaps.init())
-          .pipe(sass().on('error', sass.logError)) // Initialize sass
-          .pipe(autoprefixer()) // Passes it through gulp-autoprefixer
-          .pipe(sourcemaps.write()) // Writing sourcemaps
+          .pipe(sass().on('error', sass.logError))
+          .pipe(autoprefixer())
+          .pipe(sourcemaps.write())
           .pipe(cssmin())
           .pipe(gulp.dest(paths.style.destination))
           .pipe(browserSync.reload({

@@ -52,7 +52,7 @@
   position: fixed;
   @include flexCenterCenter;
   right: 0px;
-  cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+  cursor: url("http://www.josefineklund.com/wp-content/uploads/2018/04/femme_sm.png"), pointer;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -66,28 +66,36 @@
 .first-section {
   width: $fullWidthVp;
   min-height: $fullHeightVp;
-  font-size: 0.9rem;
-  letter-spacing: 4px;
 }
 
 // INSTAGRAM SECTION
 #insta {
   display: flex;
   flex-wrap: wrap;
-  max-width: $wrapper;
+  justify-content: center;
+  max-width: 930px;
+  padding-left: 0!important;
 }
 
 .insta-post {
   display: flex;
   @include bg;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin: 0.2rem;
+  @include respond-to(small) {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 #instagram {
   background: yellow;
+  padding: 4rem 0rem;
   min-height: $fullHeightVp;
+  @include respond-to(small) {
+    padding: 1rem;
+  }
 }
 
 #instagram, .about {
@@ -102,7 +110,6 @@
 
 .about {
   background: #69b4ff;
-  min-height: 60vh;
 }
 
 .about-wrapper {
@@ -110,17 +117,7 @@
   display: flex;
   justify-content: center;
   flex-flow: column;
-  padding: 1rem;
-  @include respond-to(small) {
-    padding: 0rem;
-  }
-}
-
-.about-post {
-  p{
-    font-size: 11px;
-    line-height: 19px;
-  }
+  padding: 6rem 1rem;
 }
 
 // AUDIO

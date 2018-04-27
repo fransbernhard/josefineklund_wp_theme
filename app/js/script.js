@@ -4,7 +4,7 @@ var divImg = document.getElementById('rotate-img')
 
 window.onload = function init(){
   // INSTAGRAM
-  
+
   num_photos = 30
 
   // GET INSTAGRAM POSTS
@@ -14,7 +14,8 @@ window.onload = function init(){
    type: 'GET',
    data: {access_token: token, count: num_photos},
    success: function(data){
-     for( x in data.data ){
+     console.log(data.data);
+     for( var x in data.data ){
        $('#insta').append('<li><a target="_blank" href="'+data.data[x].link+'" class="insta-post" style="background-image: url('+data.data[x].images.low_resolution.url+'"></a></li>')
      }
    },
@@ -27,6 +28,18 @@ window.onload = function init(){
   var isSafari = window.safari !== undefined
   var SAFARI = document.getElementById("safariAudio")
   var OTHER_BROWSER = document.getElementById("mep_0")
+  SAFARI.volume = 0.2;
+  OTHER_BROWSER.volume = 0.2;
+
+  // var promise = document.querySelector('audio').play();
+  // if (promise !== undefined) {
+  //     promise.catch(error => {
+  //         console.log("AUDIO WAS PREVENTER");
+  //     }).then(() => {
+  //         console.log("AUDIO STARTED");
+  //     });
+  // }
+
   if (isSafari) {
     console.log("YES YOU ARE SAFARI")
     SAFARI.style.display="block"
@@ -150,12 +163,19 @@ function moveElementNotSafari(element) {
 
 // CHANGE BACKGROUND ON PROJECT BTN
 var i = 0;
+var b = 0;
 function change() {
   var img = document.getElementById("projects-img");
+  var emailMe = document.getElementById("emailMe")
+
+  var color = ["#a29bfe", "#00cec9", "#6c5ce7", "#74b9ff"];
+  var textColor = ["#e84393", "#e17055", "#6c5ce7", "#d63031"]
+
   if(img){
-    var color = ["#a29bfe", "#00cec9", "#6c5ce7", "#74b9ff"];
     img.style.backgroundColor = color[i];
+    emailMe.style.color = textColor[b];
     i = (i + 1) % color.length;
+    b = (b + 1) % textColor.length;
   }
 }
 setInterval(change, 1000);

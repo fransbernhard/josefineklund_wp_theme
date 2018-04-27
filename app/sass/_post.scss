@@ -1,11 +1,15 @@
 .post-container {
   min-height: 100vh;
-  @include flexCenterCenter;
+  padding-top: 4rem;
+  @include flexColumnCenterCenter;
+  h2 {
+    color: #ffe9ec;
+  }
 }
 
 .post-wrapper {
-  max-width: 1200px;
-  padding: 7rem 0rem;
+  max-width: 1040px;
+  padding: 0rem 0rem 10rem 0rem;
   @include flexCenterCenter;
   flex-wrap: wrap;
 }

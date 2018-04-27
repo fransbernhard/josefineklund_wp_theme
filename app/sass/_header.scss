@@ -1,14 +1,3 @@
-
-// JOSEFIN LOGO
-.logo {
-  position: fixed;
-  font-size: 2rem;
-  text-transform: uppercase;
-  color: yellow;
-  padding: 1rem;
-  cursor: url("http://localhost/jose2/wp-content/uploads/2018/04/femme_sm.png"), pointer;
-}
-
 // MENU CONTAINER DIV
 #menu-primary-id {
   display: none;
@@ -35,31 +24,6 @@
 // MENU LI
 .menu-item {
   width: $fullSizePercent;
-  a {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: black;
-    cursor: pointer;
-    width: $fullWidthVp;
-    @include flexCenterCenter;
-    padding: 3rem;
-    background-color: rgba(246, 195, 203, 0.95);
-    transition: background-color 0.5s ease;
-    @include respond-to(small) {
-      font-size: 0.6rem;
-      letter-spacing: 3px;
-      padding: 1.5rem;
-      width: auto;
-    }
-  }
-
-  a:hover {
-    background: rgba(246, 195, 203, 0.75);
-    @include respond-to(small) {
-      background: rgba(255,255,255,0.5)
-    }
-  }
 }
 
 // RESPONSIVE MENU ICON

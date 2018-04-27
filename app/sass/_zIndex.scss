@@ -2,29 +2,43 @@
   z-index: 12;
 }
 
-// responsive menu icon
-.menu-icon-container {
+// Josefin text logo
+.logo {
   z-index: 11;
 }
 
-#menu-primary-menu {
+// responsive menu icon
+.menu-icon-container {
   z-index: 10;
 }
 
-.post-wrapper, .post, .post-container {
+#menu-primary-menu, .menu-primary-menu-container, .menu, .menu-item, .menu-item a {
   z-index: 9;
 }
 
-#rotate-img {
+.post {
   z-index: 8;
 }
 
-#mep-0 {
+#rotate-img {
   z-index: 7;
 }
 
-// Josefin text logo
-.logo {
+#projects-img, .projects, .projects-container {
+  z-index: 1;
+  @include respond-to(small) {
+    z-index: 6;
+  }
+}
+
+.about-wrapper, .about, #about {
+  z-index: 6;
+  @include respond-to(small) {
+    z-index: 3;
+  }
+}
+
+#mep-0 {
   z-index: 6;
 }
 

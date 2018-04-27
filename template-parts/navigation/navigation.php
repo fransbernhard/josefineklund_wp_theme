@@ -10,7 +10,7 @@
  * @version 1.2
  */?>
 
- <a class="logo font-effect-fire-animation" href="#home">Josefin Eklund</a>
+<a class="logo" href="#home"><h1 class="font-effect-fire-animation">Josefin Eklund</h1></a>
 
 <div class="menu-icon-container" id="menu-icon">
   <span class="bar"></span>

@@ -116,6 +116,7 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 	</div>
 
 	<div class="post-container" id="art">
+		<h2 class="font-effect-neon">ART WORKS</h2>
 	  <div class="post-wrapper">
       <?php
 				$postArgs = array (
@@ -164,7 +165,7 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 					get_template_part( 'template-parts/post/content' );
 				endwhile;
 			?>
-			<a class="neon font-effect-neon" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
+			<a class="emailMe" id="emailMe" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
 		</div>
 	</div>
 
