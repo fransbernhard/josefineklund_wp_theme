@@ -29,6 +29,39 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 		endwhile; endif; ?>
 	</div>
 
+	<div class="post-container" id="art">
+		<h2 class="font-effect-neon">ART WORKS</h2>
+	  <div class="post-wrapper">
+      <?php
+				$postArgs = array (
+					'post_type' => 'post',
+					'order'=> 'ASC',
+					'posts_per_page' => 40
+				);
+				$the_query = new WP_Query( $postArgs );
+        if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();
+          if ( has_post_thumbnail() ) :
+            $thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');?>
+
+            <div class="post" onclick="openModal('<?php echo $thumbnailBgImg[0] ?>', '<?php the_title(); ?>', '<?php echo $post->ID ?>', '<?php echo the_content() ?>')">
+              <div
+                class="post-thumbnail"
+                style="background-image: url('<?php echo $thumbnailBgImg[0]; ?>');"
+              ></div>
+              <div class="post-content">
+                <h3 class="thumbnail-h3"><?php the_title(); ?></h3>
+                <p class="thumbnail-p"><?php the_content(); ?></p>
+              </div>
+            </div>
+
+            <?php get_template_part( 'template-parts/post/modal-image' );
+          endif;
+        endwhile;
+        endif;
+      ?>
+	  </div>
+	</div>
+
 	<div id="instagram">
 		<ul id="insta"></ul>
 	</div>
@@ -40,14 +73,14 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 				<?php
 				$args = array (
 					'post_type' => 'projects_post',
-					'order'=> 'ASC',
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'category',
 							'field'    => 'slug',
 							'terms'    => array( '2018' )
 						)
-					)
+					),
+					'posts_per_page' => 30
 				);
 
 				$query1 = new WP_Query( $args );
@@ -67,14 +100,14 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 			<ul> <?php
 				$args2 = array (
 					'post_type' => 'projects_post',
-					'order'=> 'ASC',
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'category',
 							'field'    => 'slug',
 							'terms'    => array( '2017' )
 						)
-					)
+					),
+					'posts_per_page' => 30
 				);
 				$query2 = new WP_Query( $args2 );
 				if ( $query2->have_posts() ) {
@@ -92,14 +125,14 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 			<ul> <?php
 				$args3 = array (
 					'post_type' => 'projects_post',
-					'order'=> 'ASC',
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'category',
 							'field'    => 'slug',
 							'terms'    => array( '2016' )
 						)
-					)
+					),
+					'posts_per_page' => 30
 				);
 				$query3 = new WP_Query( $args3 );
 				if ( $query3->have_posts() ) {
@@ -115,49 +148,12 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 		</div>
 	</div>
 
-	<div class="post-container" id="art">
-		<h2 class="font-effect-neon">ART WORKS</h2>
-	  <div class="post-wrapper">
-      <?php
-				$postArgs = array (
-					'post_type' => 'post',
-					'order'=> 'ASC',
-					'posts_per_page' => 20,
-				);
-				$the_query = new WP_Query( $postArgs );
-        if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();
-          if ( has_post_thumbnail() ) :
-            $thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');?>
-
-            <div
-              class="post" onclick="openModal('<?php echo $thumbnailBgImg[0] ?>', '<?php the_title(); ?>', '<?php echo $post->ID ?>', '<?php echo the_content() ?>')"
-              title="<?php echo the_title_attribute(); ?>"
-            >
-              <div
-                class="post-thumbnail"
-                id="post-thumbnail"
-                style="background-image: url('<?php echo $thumbnailBgImg[0]; ?>');"
-              ></div>
-              <div class="post-content">
-                <h3 id="thumbnail-h3"><?php the_title(); ?></h3>
-                <p id="thumbnail-p"><?php the_content(); ?></p>
-              </div>
-            </div>
-
-            <?php get_template_part( 'template-parts/post/modal-image' );
-          endif;
-        endwhile;
-        endif;
-      ?>
-	  </div>
-	</div>
-
 	<div class="about" id="about">
 		<div class="about-wrapper">
 			<?php
 				$args = array(
 					'post_type' => 'about_post',
-					'posts_per_page' => 5,
+					'posts_per_page' => 10,
 					'order' => "ASC"
 				);
 				$loop = new WP_Query( $args );
@@ -165,7 +161,7 @@ get_template_part( 'template-parts/navigation/navigation' ); ?>
 					get_template_part( 'template-parts/post/content' );
 				endwhile;
 			?>
-			<a class="emailMe" id="emailMe" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
+			<a class="emailMe font-effect-neon" id="emailMe" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
 		</div>
 	</div>
 

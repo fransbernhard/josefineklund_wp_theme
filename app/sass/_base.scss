@@ -14,8 +14,11 @@
 .wrong-container {
   width: $fullWidthVp;
   @include flexCenterCenter;
-  min-height: 100vh;
-  background: fuchsia;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  background: url('../img/b.jpg') no-repeat top center scroll;
+  background-size: cover;
 }
 
 .wrong-wrapper {
@@ -33,18 +36,26 @@
 }
 
 #rotate {
-  display: none;
-  width: 150px;
-  height: 150px;
+  @include flexCenterCenter;
+  width: 100px;
+  height: 100px;
   position: fixed;
   background: #FF83FA;
-  top: 45%;
-  left: 0.5rem;
-  padding: 0.5rem;
+  left: 18%;
+  top: 9%;
   border-radius: 50%;
   animation: rotating 10s linear infinite;
+  h3 {
+    font-size: 0.68rem;
+    @include respond-to(small) {
+      font-size: 0.9rem;
+    }
+  }
   @include respond-to(small) {
-    @include flexCenterCenter;
+    top: 45%;
+    width: 150px;
+    height: 150px;
+    left: 0.5rem;
   }
 }
 
@@ -113,11 +124,14 @@
 }
 
 .about-wrapper {
-  max-width: 700px;
+  max-width: 940px;
   display: flex;
   justify-content: center;
   flex-flow: column;
-  padding: 6rem 1rem;
+  padding: 4rem 1rem;
+  @include respond-to(small) {
+    padding: 6rem 1rem;
+  }
 }
 
 // AUDIO
@@ -133,7 +147,7 @@ audio {
   display: none;
   position: fixed;
   flex-flow: column;
-  max-width: 90px;
+  max-width: 50px;
   bottom: 0px;
   @include respond-to(small) {
     max-width: 140px;
@@ -153,4 +167,11 @@ audio {
 
 .mejs-time, .mejs-currenttime-container, .mejs-time-rail {
   display: none;
+}
+
+.mejs-volume-button, .mejs-mute {
+  display: none;
+  @include respond-to(small) {
+    display: block;
+  }
 }

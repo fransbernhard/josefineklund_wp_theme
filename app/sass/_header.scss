@@ -1,5 +1,5 @@
 // MENU CONTAINER DIV
-#menu-primary-id {
+#menu-primary-id, #menu-secondary-menu {
   display: none;
   position: fixed;
   cursor: pointer;
@@ -16,7 +16,7 @@
 }
 
 // MENU UL
-#menu-primary-menu {
+#menu-primary-menu, #menu-secondary-menu {
   padding: 0;
   margin: 0;
 }

@@ -14,7 +14,6 @@ window.onload = function init(){
    type: 'GET',
    data: {access_token: token, count: num_photos},
    success: function(data){
-     console.log(data.data);
      for( var x in data.data ){
        $('#insta').append('<li><a target="_blank" href="'+data.data[x].link+'" class="insta-post" style="background-image: url('+data.data[x].images.low_resolution.url+'"></a></li>')
      }
@@ -28,36 +27,28 @@ window.onload = function init(){
   var isSafari = window.safari !== undefined
   var SAFARI = document.getElementById("safariAudio")
   var OTHER_BROWSER = document.getElementById("mep_0")
-  SAFARI.volume = 0.2;
-  OTHER_BROWSER.volume = 0.2;
 
-  // var promise = document.querySelector('audio').play();
-  // if (promise !== undefined) {
-  //     promise.catch(error => {
-  //         console.log("AUDIO WAS PREVENTER");
-  //     }).then(() => {
-  //         console.log("AUDIO STARTED");
-  //     });
-  // }
+  if(location.pathname == "/"){
+    if (isSafari) {
+      console.log("YES YOU ARE SAFARI")
+      SAFARI.style.display="block"
+      OTHER_BROWSER.style.display="none"
+      divImg.style.zIndex = 0
+    } else {
+      console.log("NOT SAFARI")
+      SAFARI.style.display="none"
+      OTHER_BROWSER.style.display="block"
 
-  if (isSafari) {
-    console.log("YES YOU ARE SAFARI")
-    SAFARI.style.display="block"
-    OTHER_BROWSER.style.display="none"
-
-    divImg.style.zIndex = 0
+      // MOVE ROTATING ELEMENT
+      moveElementNotSafari(divImg)
+    }
   } else {
-    console.log("NOT SAFARI")
-    SAFARI.style.display="none"
-    OTHER_BROWSER.style.display="block"
-
-    // MOVE ROTATING ELEMENT
-    moveElementNotSafari(divImg)
+    console.log("You are not at root");
   }
 }
 
 // MODAL IMAGE
-function openModal(URL, TITLE, ID, CAPTION){
+const openModal = (URL, TITLE, ID, CAPTION) => {
   var modal = document.getElementById('myModal')
   var modalImg = document.getElementById("modal-img")
   var caption = document.getElementById("caption")
@@ -105,7 +96,7 @@ document.addEventListener('click', function (e) {
 window.onclick = function(e) {
   if (!e.target.classList.contains('bar')) {
     if (menuPrimary.classList.contains('activeMenu')) {
-      console.log("REMOVE ACTIVE CLASS FROM PRIMARY MENU")
+      // console.log("REMOVE ACTIVE CLASS FROM PRIMARY MENU")
       menuPrimary.classList.remove('activeMenu')
       menuIcon.classList.remove("open")
     } else {
@@ -119,7 +110,7 @@ window.onclick = function(e) {
 // MOVE ROTATING IMAGE
 var timeDownUp = null;
 
-function moveElementNotSafari(element) {
+const moveElementNotSafari = element => {
   var mousePosition
   var offset = [0,0]
   var isDown = false
@@ -164,12 +155,12 @@ function moveElementNotSafari(element) {
 // CHANGE BACKGROUND ON PROJECT BTN
 var i = 0;
 var b = 0;
-function change() {
+const change = () => {
   var img = document.getElementById("projects-img");
   var emailMe = document.getElementById("emailMe")
 
   var color = ["#a29bfe", "#00cec9", "#6c5ce7", "#74b9ff"];
-  var textColor = ["#e84393", "#e17055", "#6c5ce7", "#d63031"]
+  var textColor = ["#e3c3ff", "#f9f3fc", "#c5cfff", "#FFE1F0"]
 
   if(img){
     img.style.backgroundColor = color[i];
