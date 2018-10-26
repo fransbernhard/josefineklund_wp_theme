@@ -1,28 +1,17 @@
-/**
- * REQUIREMENTS
- */
-// Requiring Gulp
-var gulp = require('gulp');
-// Requires the gulp-sass plugin
-var sass = require('gulp-sass');
-// Prevent gulp from exiting on error
-var plumber = require('gulp-plumber');
-// Requiring autoprefixer
-var autoprefixer = require('gulp-autoprefixer');
-// Requiring Sourcemaps
-var sourcemaps = require('gulp-sourcemaps');
-//Auto refresh browser on file save
-var browserSync = require('browser-sync');
-// Require merge-stream to output multilple tasks to multiple destinations
-var merge = require('merge-stream');
-var cssmin = require('gulp-cssmin');
-var uglify = require('gulp-uglifyjs');
-var reload = browserSync.reaload;
-var imagemin = require('gulp-imagemin'),
-    cache = require('gulp-cache');
-
-const concat = require('gulp-concat');
-const babel = require('gulp-babel');
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    plumber = require('gulp-plumber'),
+    autoprefixer = require('gulp-autoprefixer'),
+    sourcemaps = require('gulp-sourcemaps'),
+    browserSync = require('browser-sync'),
+    merge = require('merge-stream'),
+    cssmin = require('gulp-cssmin'),
+    uglify = require('gulp-uglifyjs'),
+    reload = browserSync.reaload,
+    imagemin = require('gulp-imagemin'),
+    cache = require('gulp-cache'),
+    babel = require('gulp-babel'),
+    concat = require('gulp-concat');
 
 // Internal config, folder structure
 var paths = {
@@ -45,7 +34,7 @@ gulp.task('browser-sync', function() {
     ];
 
     browserSync.init(files, {
-        proxy: "http://localhost/jose2/",
+        proxy: "http://localhost/josefin_eklund",
         notify: false
     });
 });
@@ -84,7 +73,7 @@ try {
           }));
     });
 } catch(e) {
-    console.log("HEJ JAG ÄR ETT FEL", e.stack);
+    console.log("ERROR:", e.stack);
 }
 
 gulp.task('default', ['sass', 'js', 'images', 'browser-sync'], function(){

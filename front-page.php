@@ -1,33 +1,32 @@
 <?php
-
-get_header();
-
-get_template_part( 'template-parts/navigation/navigation' ); ?>
+		get_header();
+		get_template_part( 'template-parts/navigation/navigation' );
+?>
 
 <main id="main" class="container" role="main">
-	<div class="background-img"></div>
+		<div class="background-img"></div>
 
-	<a href="#instagram">
-		<div class="rotating rotate" id="rotate">
-			<h3>Instagram</h3>
+		<a href="#instagram">
+				<div class="rotating rotate" id="rotate">
+						<h3>Instagram</h3>
+				</div>
+		</a>
+
+		<div class="projects-container">
+				<a id="projects-img" class="projects" href="#projects">Projects</a>
 		</div>
-	</a>
 
-	<div class="projects-container">
-		<a id="projects-img" class="projects" href="#projects">Projects</a>
-	</div>
+		<?php if ( has_post_thumbnail() ) {
+				$homeImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
+				<img id="rotate-img" class="rotating-back rotate" src="<?php echo $homeImg[0] ?>">
+		<?php } ?>
 
-	<?php if ( has_post_thumbnail() ) {
-		$homeImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
-		<img id="rotate-img" class="rotating-back rotate" src="<?php echo $homeImg[0] ?>">
-	<?php } ?>
-
-	<!-- IMAGE SCREENSHOT FROM AMAZING VADEOMAKER = LOROCROM @ https://vimeo.com/243208219 -->
-	<div class="first-section" id="home">
-		<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-       	the_content();
-		endwhile; endif; ?>
-	</div>
+		<!-- IMAGE SCREENSHOT FROM AMAZING VADEOMAKER = LOROCROM @ https://vimeo.com/243208219 -->
+		<div class="first-section" id="home">
+				<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+			     	the_content();
+				endwhile; endif; ?>
+		</div>
 
 	<div class="post-container" id="art">
 		<h2 class="font-effect-neon">ART WORKS</h2>
