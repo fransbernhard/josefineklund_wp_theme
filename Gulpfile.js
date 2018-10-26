@@ -33,7 +33,7 @@ gulp.task('browser-sync', function() {
     ];
 
     browserSync.init(files, {
-        proxy: "http://localhost/josefin_eklund",
+        proxy: "http://localhost/josefin",
         notify: false
     });
 });
