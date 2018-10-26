@@ -27,7 +27,6 @@ var paths = {
 
 // browser-sync task for starting the server.
 gulp.task('browser-sync', function() {
-    //watch files
     var files = [
         './style.css',
         './*.php'
