@@ -1,5 +1,4 @@
 var $ =  jQuery,
-    divImg = document.getElementById('rotate-img'),
     token = '1466267444.6d74351.c025731af1b644c8a4f1fe6a67fb9d46',
     userid = "1466267444",
     num_photos = 30;
@@ -15,6 +14,7 @@ window.onload = function init(){
             count: num_photos
         },
         success: function(data){
+            console.log(data);
             for( var x in data.data ){
                 $('#insta').append('<li><a target="_blank" href="'+data.data[x].link+'" class="insta-post" style="background-image: url('+data.data[x].images.low_resolution.url+'"></a></li>')
             }
@@ -24,23 +24,24 @@ window.onload = function init(){
         }
     })
 
-    // CHECK BROWSER FOR AUDIO
+    // CHECK BROWSER FOR AUDIO + MOVE ROTATING IMAGE
     var isSafari = window.safari !== undefined
     var SAFARI = document.getElementById("safariAudio")
     var OTHER_BROWSER = document.getElementById("mep_0")
+    var divImg = document.getElementById('rotate-img');
 
-    if(location.pathname == "/"){
-      if (isSafari) {
-          SAFARI.style.display="block"
-          OTHER_BROWSER.style.display="none"
-          divImg.style.zIndex = 0
-      } else {
-          SAFARI.style.display="none"
-          OTHER_BROWSER.style.display="block"
+    if(location.pathname == "/josefin/"){
+        if (isSafari) {
+            SAFARI.style.display="block"
+            OTHER_BROWSER.style.display="none"
+            divImg.style.zIndex = 0
+        } else {
+            SAFARI.style.display="none"
+            OTHER_BROWSER.style.display="block"
 
-          // MOVE ROTATING ELEMENT
-          moveElementNotSafari(divImg)
-      }
+            // // MOVE ROTATING ELEMENT
+            // moveElementNotSafari(divImg)
+        }
     } else {
         console.log("You are not at root");
     }
@@ -106,48 +107,43 @@ window.onclick = function(e) {
 }
 
 // MOVE ROTATING IMAGE
-var timeDownUp = null;
+function moveElementNotSafari(element){
+    element.onmousedown = function(event) { // (1) start the process
 
-const moveElementNotSafari = element => {
-  var mousePosition
-  var offset = [0,0]
-  var isDown = false
+        // (2) prepare to moving: make absolute and on top by z-index
+        element.style.position = 'absolute';
+        element.style.zIndex = 1000;
+        // move it out of any current parents directly into body
+        // to make it positioned relative to the body
+        document.body.append(element);
+        // ...and put that absolutely positioned element under the cursor
 
-  if(element){
-      element.addEventListener('mousedown', function (e) {
-          timeDownUp = new Date().getTime();
-          isDown = true
-          offset = [
-              element.offsetLeft - e.clientX,
-              element.offsetTop - e.clientY
-          ]
-      }.bind(this));
-      element.addEventListener('mouseup', function (e) {
-          timeDownUp = new Date().getTime();
-          isDown = false
-      }.bind(this));
-      element.addEventListener('mousemove', function (e) {
-          var timeMove = new Date().getTime();
-          timeDownUp += 10;
-          if (timeMove > timeDownUp) {
-              if (e.which === 1) {
-                  e.preventDefault()
-                  if (isDown) {
-                      mousePosition = {
-                          x : e.clientX,
-                          y : e.clientY
-                      }
-                      element.style.left = (mousePosition.x + offset[0]) + 'px'
-                      element.style.top  = (mousePosition.y + offset[1]) + 'px'
-                  }
-              }
-          } else {
-              timeDownUp = null;
-          }
-      }.bind(this));
-  } else {
-      console.log("NOT MOVING ELEMENT")
-  }
+        moveAt(event.pageX, event.pageY);
+
+        // centers the element at (pageX, pageY) coordinates
+        function moveAt(pageX, pageY) {
+            element.style.left = pageX - element.offsetWidth / 2 + 'px';
+            element.style.top = pageY - element.offsetHeight / 2 + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
+
+        // (3) move the element on mousemove
+        document.addEventListener('mousemove', onMouseMove);
+
+        // (4) drop the element, remove unneeded handlers
+        element.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            element.onmouseup = null;
+        };
+
+        element.ondragstart = function() {
+            return false;
+        };
+
+    };
 }
 
 // CHANGE BACKGROUND ON PROJECT BTN
