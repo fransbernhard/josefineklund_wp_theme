@@ -1,6 +1,6 @@
 <?php
-		get_header();
-		get_template_part( 'template-parts/navigation/navigation' );
+	get_header();
+	get_template_part( 'template-parts/navigation/navigation' );
 ?>
 
 <main id="main" class="container" role="main">

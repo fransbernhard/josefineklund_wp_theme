@@ -7,9 +7,9 @@
 </div>
 
 <?php
-  $args = array(
+    $args = array(
       'theme_location' => 'secondary',
       'container_id' => 'menu-primary-id'
-  );
-  wp_nav_menu( $args );
+    );
+    wp_nav_menu( $args );
 ?>
