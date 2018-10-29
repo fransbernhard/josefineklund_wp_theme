@@ -1,10 +1,8 @@
 var $ =  jQuery,
-    token = "1466267444.d646b5c.22d54e0a889d4d1fa68adfd9b4430942",
-    userid = "1466267444",
+
     num_photos = 30;
 
 window.onload = function init(){
-    // GET INSTAGRAM POSTS
     $.ajax({
         url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent',
         dataType: 'jsonp',

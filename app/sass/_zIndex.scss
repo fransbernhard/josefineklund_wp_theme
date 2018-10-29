@@ -48,12 +48,16 @@
         z-index: -1;
     }
     @include respond-to(medium) {
-        z-index: 5;
+        z-index: 1;
     }
 }
 
 #insta {
-    z-index: 2;
+    z-index: 10;
+}
+
+.projects-wrapper {
+    z-index: 10;
 }
 
 .wrong-container {
