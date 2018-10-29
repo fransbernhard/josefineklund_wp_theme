@@ -1,6 +1,6 @@
 var $ =  jQuery,
-    token = "xxx.xxx.xxx",
-    userid = "xxx",
+    token = "1466267444.d646b5c.22d54e0a889d4d1fa68adfd9b4430942",
+    userid = "1466267444",
     num_photos = 30;
 
 window.onload = function init(){
@@ -14,7 +14,6 @@ window.onload = function init(){
             count: num_photos
         },
         success: function(data){
-            console.log(data);
             for( var x in data.data ){
                 $('#insta').append('<li><a target="_blank" href="'+data.data[x].link+'" class="insta-post" style="background-image: url('+data.data[x].images.low_resolution.url+'"></a></li>')
             }
@@ -107,44 +106,44 @@ window.onclick = function(e) {
 }
 
 // MOVE ROTATING IMAGE
-function moveElementNotSafari(element){
-    element.onmousedown = function(event) { // (1) start the process
-
-        // (2) prepare to moving: make absolute and on top by z-index
-        element.style.position = 'absolute';
-        element.style.zIndex = 1000;
-        // move it out of any current parents directly into body
-        // to make it positioned relative to the body
-        document.body.append(element);
-        // ...and put that absolutely positioned element under the cursor
-
-        moveAt(event.pageX, event.pageY);
-
-        // centers the element at (pageX, pageY) coordinates
-        function moveAt(pageX, pageY) {
-            element.style.left = pageX - element.offsetWidth / 2 + 'px';
-            element.style.top = pageY - element.offsetHeight / 2 + 'px';
-        }
-
-        function onMouseMove(event) {
-            moveAt(event.pageX, event.pageY);
-        }
-
-        // (3) move the element on mousemove
-        document.addEventListener('mousemove', onMouseMove);
-
-        // (4) drop the element, remove unneeded handlers
-        element.onmouseup = function() {
-            document.removeEventListener('mousemove', onMouseMove);
-            element.onmouseup = null;
-        };
-
-        element.ondragstart = function() {
-            return false;
-        };
-
-    };
-}
+// function moveElementNotSafari(element){
+//     element.onmousedown = function(event) { // (1) start the process
+//
+//         // (2) prepare to moving: make absolute and on top by z-index
+//         element.style.position = 'absolute';
+//         element.style.zIndex = 1000;
+//         // move it out of any current parents directly into body
+//         // to make it positioned relative to the body
+//         document.body.append(element);
+//         // ...and put that absolutely positioned element under the cursor
+//
+//         moveAt(event.pageX, event.pageY);
+//
+//         // centers the element at (pageX, pageY) coordinates
+//         function moveAt(pageX, pageY) {
+//             element.style.left = pageX - element.offsetWidth / 2 + 'px';
+//             element.style.top = pageY - element.offsetHeight / 2 + 'px';
+//         }
+//
+//         function onMouseMove(event) {
+//             moveAt(event.pageX, event.pageY);
+//         }
+//
+//         // (3) move the element on mousemove
+//         document.addEventListener('mousemove', onMouseMove);
+//
+//         // (4) drop the element, remove unneeded handlers
+//         element.onmouseup = function() {
+//             document.removeEventListener('mousemove', onMouseMove);
+//             element.onmouseup = null;
+//         };
+//
+//         element.ondragstart = function() {
+//             return false;
+//         };
+//
+//     };
+// }
 
 // CHANGE BACKGROUND ON PROJECT BTN
 var i = 0;

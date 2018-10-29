@@ -1,53 +1,61 @@
 .modal {
-  z-index: 12;
+    z-index: 12;
 }
 
 // Josefin text logo
 .logo {
-  z-index: 11;
+    z-index: 11;
 }
 
 // responsive menu icon
 .menu-icon-container {
-  z-index: 10;
+    z-index: 10;
 }
 
 #menu-primary-menu, .menu-primary-menu-container, .menu, .menu-item, .menu-item a {
-  z-index: 9;
+    z-index: 9;
 }
 
 .post, .post-container h2 {
-  z-index: 8;
+    z-index: 8;
 }
 
 #rotate-img {
-  z-index: 7;
+    z-index: 7;
 }
 
 #projects-img, .projects, .projects-container {
-  z-index: 1;
-  @include respond-to(small) {
-    z-index: 6;
-  }
+    z-index: 1;
+    @include respond-to(small) {
+        z-index: 6;
+    }
 }
 
 #about {
-  z-index: 6;
+    z-index: 6;
 }
 
 #mep-0 {
-  z-index: 6;
+    z-index: 6;
 }
 
 .background-img {
-  z-index: -1;
+    z-index: -1;
 }
 
 #rotate, #projects-img {
-  @include respond-to(small) {
+    @include respond-to(small) {
+        z-index: -1;
+    }
+    @include respond-to(medium) {
+        z-index: 5;
+    }
+}
+
+#insta {
+    z-index: 2;
+}
+
+.wrong-container {
     z-index: -1;
-  }
-  @include respond-to(medium) {
-    z-index: 5;
-  }
 }

@@ -1,177 +1,176 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *:focus {
-  outline: none;
+    outline: none;
 }
 
 .container {
-  width: $fullWidthVp;
+    width: $fullWidthVp;
 }
 
 // 404 styling
 .wrong-container {
-  width: $fullWidthVp;
-  @include flexCenterCenter;
-  height: 100vh;
-  position: fixed;
-  z-index: -1;
-  background: url('../img/b.jpg') no-repeat top center scroll;
-  background-size: cover;
+    width: $fullWidthVp;
+    @include flexCenterCenter;
+    height: 100vh;
+    position: fixed;
+    background: url('../img/b.jpg') no-repeat top center scroll;
+    background-size: cover;
 }
 
 .wrong-wrapper {
-  max-width: $wrapper;
-  @include flexCenterCenter;
+    max-width: $wrapper;
+    @include flexCenterCenter;
 }
 
 // FIRST SECTION
 .background-img {
-  position: fixed;
-  width: $fullWidthVp;
-  height: $fullHeightVp;
-  background: url('../img/b.jpg') no-repeat top center scroll;
-  background-size: cover;
+    position: fixed;
+    width: $fullWidthVp;
+    height: $fullHeightVp;
+    background: url('../img/b.jpg') no-repeat top center scroll;
+    background-size: cover;
 }
 
 #rotate {
-  @include flexCenterCenter;
-  width: 100px;
-  height: 100px;
-  position: fixed;
-  background: #FF83FA;
-  left: 18%;
-  top: 9%;
-  border-radius: 50%;
-  animation: rotating 10s linear infinite;
-  h3 {
-    font-size: 0.68rem;
-    @include respond-to(small) {
-      font-size: 0.9rem;
+    @include flexCenterCenter;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    background: #FF83FA;
+    left: 18%;
+    top: 9%;
+    border-radius: 50%;
+    animation: rotating 10s linear infinite;
+    h3 {
+        font-size: 0.68rem;
+        @include respond-to(small) {
+            font-size: 0.9rem;
+        }
     }
-  }
-  @include respond-to(small) {
-    top: 45%;
-    width: 150px;
-    height: 150px;
-    left: 0.5rem;
-  }
+    @include respond-to(small) {
+        top: 45%;
+        width: 150px;
+        height: 150px;
+        left: 0.5rem;
+    }
 }
 
 #rotate-img {
-  position: fixed;
-  @include flexCenterCenter;
-  right: 0px;
-  cursor: url("http://www.josefineklund.com/wp-content/uploads/2018/04/femme_sm.png"), pointer;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  animation: 1.5s ease-out 0s 1 slideInFromBottom, rotatingBack 20s linear 2s infinite;
-  @include respond-to(small) {
-    width: 450px;
-    height: 450px;
-  }
+    position: fixed;
+    @include flexCenterCenter;
+    right: 0px;
+    cursor: url("http://www.josefineklund.com/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    animation: 1.5s ease-out 0s 1 slideInFromBottom, rotatingBack 20s linear 2s infinite;
+    @include respond-to(small) {
+        width: 400px;
+        height: 400px;
+    }
 }
 
 .first-section {
-  width: $fullWidthVp;
-  min-height: $fullHeightVp;
+    width: $fullWidthVp;
+    min-height: $fullHeightVp;
 }
 
 // INSTAGRAM SECTION
 #insta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 930px;
-  padding-left: 0!important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 930px;
+    padding-left: 0!important;
 }
 
 .insta-post {
-  display: flex;
-  @include bg;
-  width: 100px;
-  height: 100px;
-  margin: 0.2rem;
-  @include respond-to(small) {
-    width: 150px;
-    height: 150px;
-  }
+    display: flex;
+    @include bg;
+    width: 100px;
+    height: 100px;
+    margin: 0.2rem;
+    @include respond-to(small) {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 #instagram {
-  background: yellow;
-  padding: 4rem 0rem;
-  min-height: $fullHeightVp;
-  @include respond-to(small) {
-    padding: 1rem;
-  }
+    background: yellow;
+    padding: 4rem 0rem;
+    min-height: $fullHeightVp;
+    @include respond-to(small) {
+        padding: 1rem;
+    }
 }
 
 #instagram, .about {
-  width: $fullWidthVp;
-  @include flexColumnCenterCenter;
+    width: $fullWidthVp;
+    @include flexColumnCenterCenter;
 }
 
 // ABOUT SECTION
 .about-container {
-  @include flexCenterCenter;
+    @include flexCenterCenter;
 }
 
 .about {
-  background: #69b4ff;
+    background: #69b4ff;
 }
 
 .about-wrapper {
-  max-width: 940px;
-  display: flex;
-  justify-content: center;
-  flex-flow: column;
-  padding: 4rem 1rem;
-  @include respond-to(small) {
-    padding: 6rem 1rem;
-  }
+    max-width: 940px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    padding: 4rem 1rem;
+    @include respond-to(small) {
+        padding: 6rem 1rem;
+    }
 }
 
 // AUDIO
 // safari
 audio {
-  position: fixed;
-  display: none;
-  bottom: 0px;
+    position: fixed;
+    display: none;
+    bottom: 0px;
 }
 
 // other browsers
 #mep_0 {
-  display: none;
-  position: fixed;
-  flex-flow: column;
-  max-width: 50px;
-  bottom: 0px;
-  @include respond-to(small) {
-    max-width: 140px;
-  }
+    display: none;
+    position: fixed;
+    flex-flow: column;
+    max-width: 50px;
+    bottom: 0px;
+    @include respond-to(small) {
+        max-width: 140px;
+    }
 }
 
 .mejs-controls a.mejs-horizontal-volume-slider {
-  display: none!important;
-  @include respond-to(small) {
-    display: table!important;
-  }
+    display: none!important;
+    @include respond-to(small) {
+        display: table!important;
+    }
 }
 
 .mejs-container, .mejs-container .mejs-controls, .mejs-embed, .mejs-embed body {
-  border-radius: 0px 7px 0px 0px;
+    border-radius: 0px 7px 0px 0px;
 }
 
 .mejs-time, .mejs-currenttime-container, .mejs-time-rail {
-  display: none;
+    display: none;
 }
 
 .mejs-volume-button, .mejs-mute {
-  display: none;
-  @include respond-to(small) {
-    display: block;
-  }
+    display: none;
+    @include respond-to(small) {
+        display: block;
+    }
 }

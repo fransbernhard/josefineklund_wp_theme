@@ -1,138 +1,136 @@
 * {
-  color: black;
-  font-family: 'Montserrat', serif, arial;
+    color: black;
+    font-family: 'Montserrat', serif, arial;
 }
 
 .logo h1, .rotate h3, .projects  {
-  font-family: 'Syncopate', serif, arial;
+    font-family: 'Syncopate', serif, arial;
 }
 
 a {
-  text-decoration: none;
-	color: black;
+    text-decoration: none;
+    color: black;
 }
 
 li {
-  list-style: none;
+    list-style: none;
 }
 
 p {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 h1 {
-  font-size: 2rem;
-  margin-top: 0!important;
-  width: auto;
-  padding: 0;
-  margin: 0;
+    font-size: 2rem;
+    margin-top: 0!important;
+    width: auto;
+    padding: 0;
+    margin: 0;
 }
 
 h2 {
-  letter-spacing: 1px;
-  text-transform: uppercase;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .emailMe {
-  transition: color 0.6s;
-  font-weight: bold;
-  color: white;
-  font-size: 1.5rem;
+    transition: color 0.6s;
+    font-weight: bold;
+    color: white;
+    font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
 }
 
 h3, .projects {
-  letter-spacing: 1px;
-  text-transform: uppercase;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 h5 {
-  margin: 0;
+    margin: 0;
 }
 
 // Rotating projects link
 .projects {
-  font-size: 0.7rem;
+    font-size: 0.7rem;
 }
 
 // JOSEFIN LOGO
 .logo {
-  position: fixed;
-  text-transform: uppercase;
-  padding-top: 1rem;
-  cursor: url("http://www.josefineklund.com/wp-content/uploads/2018/04/femme_sm.png"), pointer;
-  h1 {
-    color: yellow;
-    // font-family: "Germania One", arial, sans-serif;
-    // font-size: 3rem;
-  }
-  @include respond-to(small) {
-    padding: 1rem;
-  }
+    position: fixed;
+    text-transform: uppercase;
+    padding-top: 1rem;
+    cursor: url("http://www.josefineklund.com/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+    h1 {
+        color: yellow;
+    }
+    @include respond-to(small) {
+        padding: 1rem;
+    }
 }
 
 // ABOUT SECTION
 .about-post {
-  p {
-    font-size: 0.8rem;
-    line-height: 19px;
-  }
+    p {
+        font-size: 0.8rem;
+        line-height: 19px;
+    }
 }
 
 // MENU
 .menu-item {
-  a {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: black;
-    cursor: pointer;
-    width: $fullWidthVp;
-    @include flexCenterCenter;
-    padding: 3rem;
-    background-color: rgba(246, 195, 203, 0.95);
-    transition: background-color 0.5s ease;
-    @include respond-to(small) {
-      font-size: 0.6rem;
-      letter-spacing: 3px;
-      padding: 1.5rem;
-      width: auto;
+    a {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: black;
+        cursor: pointer;
+        width: $fullWidthVp;
+        @include flexCenterCenter;
+        padding: 3rem;
+        background-color: rgba(246, 195, 203, 0.95);
+        transition: background-color 0.5s ease;
+        @include respond-to(small) {
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            padding: 1.5rem;
+            width: auto;
+        }
     }
-  }
 
-  a:hover {
-    background: rgba(246, 195, 203, 0.75);
-    @include respond-to(small) {
-      background: rgba(255,255,255,0.5)
+    a:hover {
+        background: rgba(246, 195, 203, 0.75);
+        @include respond-to(small) {
+            background: rgba(255,255,255,0.5)
+        }
     }
-  }
 }
 
 // PROJECTS
 .projects-wrapper {
-  h3 {
-    margin-bottom: 0.2rem!important;
-    font-size: 1rem;
-  }
+    h3 {
+        margin-bottom: 0.2rem!important;
+        font-size: 1rem;
+    }
 }
 
 .project-item {
-  p {
-    margin: 0.3rem 0;
-    font-size: 0.7rem;
-  }
-  span {
-    font-style: italic;
-  }
+    p {
+        margin: 0.3rem 0;
+        font-size: 0.7rem;
+    }
+    span {
+        font-style: italic;
+    }
 }
 
 .thumbnail-h3 {
-  margin: 0;
+    margin: 0;
 }
 
 .thumbnail-p {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }

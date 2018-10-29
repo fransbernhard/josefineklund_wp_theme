@@ -1,52 +1,53 @@
 // PROJECTS SECTION
 #projects {
-  @include flexCenterCenter;
+    @include flexCenterCenter;
 }
 
 .allProjects {
-  min-height: $fullHeightVp;
-  width: $fullWidthVp;
-  @include flexColumnCenterCenter;
+    min-height: $fullHeightVp;
+    width: $fullWidthVp;
+    @include flexColumnCenterCenter;
 }
 
 .projects-wrapper {
-  background: rgba(246, 195, 203, 0.90);
-  border-radius: 1rem;
-  padding: 1rem;
-  ul {
-    padding: 0px;
-    margin: 0px;
-  }
-  margin: 4rem 0rem;
-  @include respond-to(small) {
-    margin: 0rem;
-  }
+    z-index: 6;
+    background: rgba(246, 195, 203, 0.90);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 4rem 0rem;
+    ul {
+        padding: 0px;
+        margin: 0px;
+    }
+    @include respond-to(small) {
+        margin: 0rem;
+    }
 }
 
 .project-item {
-  display: flex;
-  align-items: center;
-  p a {
-    color: #0000e6;
-    cursor: pointer;
-  }
+    display: flex;
+    align-items: center;
+    p a {
+        color: #0000e6;
+        cursor: pointer;
+    }
 }
 
 // PROJECTS ROTATING IMG
 .projects {
-  position: fixed;
-  left: 0;
-  top: 10%;
-  background: #69b4ff;
-  height: 110px;
-  width: 110px;
-  border-radius: 50%;
-  @include flexCenterCenter;
-  animation: rotatingBack 15s linear infinite;
-  transition: background-color 0.6s;
-  @include respond-to(small) {
-    top: 35%;
-    height: 100px;
-    width: 100px;
-  }
+    position: fixed;
+    left: 0;
+    top: 10%;
+    background: #69b4ff;
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    @include flexCenterCenter;
+    animation: rotatingBack 15s linear infinite;
+    transition: background-color 0.6s;
+    @include respond-to(small) {
+        top: 35%;
+        height: 100px;
+        width: 100px;
+    }
 }

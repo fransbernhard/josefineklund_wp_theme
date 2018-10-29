@@ -1,116 +1,116 @@
 // MENU CONTAINER DIV
 #menu-primary-id, #menu-secondary-menu {
-  display: none;
-  position: fixed;
-  cursor: pointer;
-  right: 0px;
-  bottom: 0px;
-  background: fuchsia;
-  @include respond-to(small) {
-    display: block;
-  }
+    display: none;
+    position: fixed;
+    cursor: pointer;
+    right: 0px;
+    bottom: 0px;
+    background: fuchsia;
+    @include respond-to(small) {
+        display: block;
+    }
 }
 
 .activeMenu {
-  display: flex!important;
+    display: flex!important;
 }
 
 // MENU UL
 #menu-primary-menu, #menu-secondary-menu {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 // MENU LI
 .menu-item {
-  width: $fullSizePercent;
+    width: $fullSizePercent;
 }
 
 // RESPONSIVE MENU ICON
 .menu-icon-container {
-  position: fixed;
-  display: flex;
-  flex-flow: column;
-  bottom: 0px;
-  right: 0px;
-  padding: 0.4rem;
-  border-radius: 10% 0 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .5s ease-in-out;
-  -moz-transition: .5s ease-in-out;
-  -o-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
-
-  @include respond-to(small) {
-    display: none;
-  }
-
-  span {
-    width: 47px;
-    height: 12px;
-    border-radius: 10%;
-    cursor: pointer;
-    background: #a29bfe;
-    margin: 2px;
-    opacity: 1;
-
+    position: fixed;
+    display: flex;
+    flex-flow: column;
+    bottom: 0px;
+    right: 0px;
+    padding: 0.4rem;
+    border-radius: 10% 0 0;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-transition: .25s ease-in-out;
-    -moz-transition: .25s ease-in-out;
-    -o-transition: .25s ease-in-out;
-    transition: .25s ease-in-out;
-  }
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
 
-  span:nth-child(1) {
-    top: 0px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
-  }
+    @include respond-to(small) {
+        display: none;
+    }
 
-  span:nth-child(2) {
-    top: 18px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
-  }
+    span {
+        width: 47px;
+        height: 12px;
+        border-radius: 10%;
+        cursor: pointer;
+        background: #a29bfe;
+        margin: 2px;
+        opacity: 1;
 
-  span:nth-child(3) {
-    top: 36px;
-    -webkit-transform-origin: left center;
-    -moz-transform-origin: left center;
-    -o-transform-origin: left center;
-    transform-origin: left center;
-  }
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+    }
+
+    span:nth-child(1) {
+        top: 0px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+    }
+
+    span:nth-child(2) {
+        top: 18px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+    }
+
+    span:nth-child(3) {
+        top: 36px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+    }
 }
 
 #menu-icon.open span:nth-child(1) {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  top: -3px;
-  left: 8px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: -3px;
+    left: 8px;
 }
 
 #menu-icon.open span:nth-child(2) {
-  width: 0%;
-  opacity: 0;
+    width: 0%;
+    opacity: 0;
 }
 
 #menu-icon.open span:nth-child(3) {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  top: 50px;
-  left: 12px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 50px;
+    left: 12px;
 }
