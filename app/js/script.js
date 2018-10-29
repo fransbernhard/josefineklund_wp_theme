@@ -1,6 +1,6 @@
 var $ =  jQuery,
-    token = "1466267444.6d74351.c025731af1b644c8a4f1fe6a67fb9d46",
-    userid = "1466267444",
+    token = "xxx.xxx.xxx",
+    userid = "xxx",
     num_photos = 30;
 
 window.onload = function init(){
@@ -13,15 +13,14 @@ window.onload = function init(){
             access_token: token,
             count: num_photos
         },
-        success: function(response){
-          console.log("SUCCESS");
-            for( var x in response.data ){
-                $('#insta').append('<li><a target="_blank" href="'+response.data[x].link+'" class="insta-post" style="background-image: url('+response.data[x].images.low_resolution.url+'"></a></li>')
+        success: function(data){
+            console.log(data);
+            for( var x in data.data ){
+                $('#insta').append('<li><a target="_blank" href="'+data.data[x].link+'" class="insta-post" style="background-image: url('+data.data[x].images.low_resolution.url+'"></a></li>')
             }
         },
         error: function(err){
             console.log(err)
-            console.log("ERROR");
         }
     })
 
