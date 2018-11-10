@@ -32,7 +32,7 @@
 
   function my_theme_enqueue_scripts(){
       wp_enqueue_style( 'hip-style', get_template_directory_uri() . '/dist/css/style.css' );
-      wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/dist/js/jose2.min.js', array('jquery'), 1, true );
+      wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/dist/js/josefin.min.js', array('jquery'), 1, true );
   }
   add_action('wp_enqueue_scripts', "my_theme_enqueue_scripts");
 
@@ -59,11 +59,11 @@
 	 *
 	 * See: https://codex.wordpress.org/Post_Formats
 	 */
-	add_theme_support('post-formats', array(
-      'image',
-      'video',
-      'gallery'
-	));
+	// add_theme_support('post-formats', array(
+    //   'image',
+    //   'video',
+    //   'gallery'
+	// ));
 
   // Set unlimited posts
   function wpsites_no_limit_posts( $query ) {

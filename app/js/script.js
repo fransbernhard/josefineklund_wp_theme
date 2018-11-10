@@ -1,8 +1,16 @@
-var $ =  jQuery,
+'use strict';
+/*jslint browser: true*/
+/*jshint globalstrict: true*/
+/*global $, jQuery, alert*/
+/*jslint node: true */
+/* jshint node: true */
 
+var $ =  jQuery,
+    
     num_photos = 30;
 
-window.onload = function init(){
+
+$( document ).ready(function() {
     $.ajax({
         url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent',
         dataType: 'jsonp',
@@ -11,38 +19,39 @@ window.onload = function init(){
             access_token: token,
             count: num_photos
         },
-        success: function(data){
-            for( var x in data.data ){
+        success: function (data) {
+            for (var x in data.data) {
                 $('#insta').append('<li><a target="_blank" href="'+data.data[x].link+'" class="insta-post" style="background-image: url('+data.data[x].images.low_resolution.url+'"></a></li>')
             }
         },
-        error: function(err){
+        error: function (err) {
             console.log(err)
         }
     })
 
     // CHECK BROWSER FOR AUDIO + MOVE ROTATING IMAGE
-    var isSafari = window.safari !== undefined
-    var SAFARI = document.getElementById("safariAudio")
-    var OTHER_BROWSER = document.getElementById("mep_0")
-    var divImg = document.getElementById('rotate-img');
+    var isSafari = window.safari !== undefined,
+        SAFARI = document.getElementById("safariAudio"),
+        OTHER_BROWSER = document.getElementById("mep_0"),
+        divImg = document.getElementById('rotate-img');
 
-    if(location.pathname == "/josefin/"){
+    if(location.pathname == "/wordpress/"){
         if (isSafari) {
-            SAFARI.style.display="block"
-            OTHER_BROWSER.style.display="none"
+            SAFARI ? SAFARI.style.display="block" : null
+            OTHER_BROWSER ? OTHER_BROWSER.style.display="none" : null
             divImg.style.zIndex = 0
         } else {
-            SAFARI.style.display="none"
-            OTHER_BROWSER.style.display="block"
+            SAFARI ? SAFARI.style.display="none" : null
+            OTHER_BROWSER ? OTHER_BROWSER.style.display="block" : null
 
             // // MOVE ROTATING ELEMENT
             // moveElementNotSafari(divImg)
         }
     } else {
+        console.log("C");
         console.log("You are not at root");
     }
-}
+});
 
 // MODAL IMAGE
 const openModal = (URL, TITLE, ID, CAPTION) => {

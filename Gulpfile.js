@@ -1,3 +1,6 @@
+'use strict'
+/* global require */
+
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     plumber = require('gulp-plumber'),
@@ -49,7 +52,7 @@ gulp.task('js', function() {
       .pipe(babel({
         presets: ['env']
       }))
-      .pipe(uglify('jose2.min.js'))
+      .pipe(uglify('josefin.min.js'))
       .pipe(gulp.dest(paths.script.destination))
       .pipe(browserSync.reload({
         stream: true
