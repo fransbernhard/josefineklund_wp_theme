@@ -16,7 +16,7 @@
     @include flexCenterCenter;
     height: 100vh;
     position: fixed;
-    background: url('../img/b.jpg') no-repeat top center scroll;
+    background: url('./img/b.jpg') no-repeat top center scroll;
     background-size: cover;
 }
 
@@ -30,7 +30,7 @@
     position: fixed;
     width: $fullWidthVp;
     height: $fullHeightVp;
-    background: url('../img/b.jpg') no-repeat top center scroll;
+    background: url('./img/b.jpg') no-repeat top center scroll;
     background-size: cover;
 }
 
@@ -39,7 +39,7 @@
     width: 100px;
     height: 100px;
     position: fixed;
-    background: #FF83FA;
+    background: $pink;
     left: 18%;
     top: 9%;
     border-radius: 50%;
@@ -102,7 +102,6 @@
 #instagram {
     background: yellow;
     padding: 4rem 0rem;
-    min-height: $fullHeightVp;
     @include respond-to(small) {
         padding: 1rem;
     }
@@ -119,7 +118,7 @@
 }
 
 .about {
-    background: #69b4ff;
+    background: $babyBlue;
 }
 
 .about-wrapper {

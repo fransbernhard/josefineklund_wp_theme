@@ -1,6 +1,6 @@
 <?php
 
-  // Add custom Post Type film_post
+  // Add custom post type About + Projects
   function create_post_type() {
       register_post_type( 'about_post',
           array(
@@ -30,9 +30,12 @@
   }
   add_action( 'init', 'create_post_type' );
 
+  // Remove auto added p tags from content
+  remove_filter( 'the_content', 'wpautop' );
+
   function my_theme_enqueue_scripts(){
-      wp_enqueue_style( 'hip-style', get_template_directory_uri() . '/dist/css/style.css' );
-      wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/dist/js/josefin.min.js', array('jquery'), 1, true );
+      wp_enqueue_style( 'hip-style', get_template_directory_uri() . '/dist/style.min.css' );
+      wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/dist/script.min.js', array('jquery'), 1, true );
   }
   add_action('wp_enqueue_scripts', "my_theme_enqueue_scripts");
 
@@ -54,17 +57,6 @@
   add_image_size('medium'    , 1000);
   add_image_size('large'     , 1400);
 
-  /*
-	 * Enable support for Post Formats.
-	 *
-	 * See: https://codex.wordpress.org/Post_Formats
-	 */
-	// add_theme_support('post-formats', array(
-    //   'image',
-    //   'video',
-    //   'gallery'
-	// ));
-
   // Set unlimited posts
   function wpsites_no_limit_posts( $query ) {
       if( $query->is_main_query() && !is_admin() && is_home() ) {
@@ -78,8 +70,5 @@
       }
   }
   add_action( 'pre_get_posts', 'wpsites_no_limit_posts' );
-
-  // Remove auto added p tags from content
-  remove_filter( 'the_content', 'wpautop' );
 
 ?>

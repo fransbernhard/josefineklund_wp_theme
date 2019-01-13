@@ -1,5 +1,5 @@
-.modal {
-    z-index: 12;
+.Modal {
+    z-index: 1001;
 }
 
 // Josefin text logo
@@ -9,11 +9,15 @@
 
 // responsive menu icon
 .menu-icon-container {
-    z-index: 10;
+    z-index: 1000;
 }
 
-#menu-primary-menu, .menu-primary-menu-container, .menu, .menu-item, .menu-item a {
-    z-index: 9;
+#menu-primary-menu,
+.menu-primary-menu-container,
+.menu,
+.menu-item,
+.menu-item a {
+    z-index: 999;
 }
 
 .post, .post-container h2 {

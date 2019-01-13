@@ -1,6 +1,7 @@
 <?php
 	get_header();
-	get_template_part( 'template-parts/navigation/navigation' );
+	get_template_part( 'template-parts/navigation' );
+	global $post;
 ?>
 
 <main id="main" class="container" role="main">
@@ -23,9 +24,9 @@
 
 	<!-- IMAGE SCREENSHOT FROM AMAZING VADEOMAKER = LOROCROM @ https://vimeo.com/243208219 -->
 	<div class="first-section" id="home">
-			<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-		     	the_content();
-			endwhile; endif; ?>
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+	     	the_content();
+		endwhile; endif; ?>
 	</div>
 
 	<div class="post-container" id="art">
@@ -37,29 +38,37 @@
 				'order'=> 'ASC',
 				'posts_per_page' => 40
 			);
-			$the_query = new WP_Query( $postArgs );
-			if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();
+
+			$postQuery = new WP_Query( $postArgs );
+			if ( $postQuery->have_posts() ) : while ( $postQuery->have_posts() ) : $postQuery->the_post();
 				if ( has_post_thumbnail() ) :
-				$thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');?>
+					$thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');
 
-				<div
-					class="post"
-					onclick="openModal('<?= $thumbnailBgImg[0] ?>', '<?php the_title(); ?>', '<?= $post->ID ?>', '<?= the_content() ?>')"
-				>
+					?>
+
 					<div
-					    class="post-thumbnail"
-					    style="background-image: url('<?= $thumbnailBgImg[0]; ?>');"
-					></div>
-					<div class="post-content">
-					    <h3 class="thumbnail-h3"><?php the_title(); ?></h3>
-					    <p class="thumbnail-p"><?php the_content(); ?></p>
+						class="post"
+						onclick="openModal(
+							'<?= $thumbnailBgImg[0] ?>',
+							'<?= the_title(); ?>',
+							'<?= wp_strip_all_tags(get_the_content()) ?>'
+						)"
+					>
+						<div
+						    class="post-thumbnail"
+						    style="background-image: url('<?= $thumbnailBgImg[0]; ?>');"
+						></div>
+						<div class="post-content">
+						    <h3 class="thumbnail-h3"><?= the_title(); ?></h3>
+						    <div id="thumbnail-content">
+								<?= the_content(); ?>
+							</div>
+						</div>
 					</div>
-				</div>
 
-				<?php get_template_part( 'template-parts/post/modal-image' );
+					<?php get_template_part( 'template-parts/post/modal-image' );
 				endif;
-			endwhile;
-			endif;
+			endwhile; endif;
 		?>
 		</div>
 	</div>
@@ -70,83 +79,33 @@
 
 	<div class="allProjects" id="projects">
 		<div class="projects-wrapper">
-			<h3>2018</h3>
-			<ul>
-				<?php
-				$args = array (
+			<?php $categories = get_categories(array(
+				'orderby' => 'name',
+				'order'   => 'DESC'
+			));
+
+			foreach ($categories as $category) {
+				$args = array(
 					'post_type' => 'projects_post',
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'category',
-							'field'    => 'slug',
-							'terms'    => array( '2018' )
-						)
-					),
+					'category_name' => $category->name,
 					'posts_per_page' => 30
 				);
 
-				$query1 = new WP_Query( $args );
+				$query = new WP_Query( $args );?>
 
-				if ( $query1->have_posts() ) {
-					while ( $query1->have_posts() ) {
-						$query1->the_post(); ?>
-						<li class="project-item">
-							<p><span><?php the_title(); ?></span> | <?php the_content(); ?></p>
-						</li>
-					<?php }
+				<?php if ($query->have_posts()) { ?>
+					<h3><?= $category->name ?></h3>
+					<ul>
+						<?php while ( $query->have_posts() ) {
+							$query->the_post(); ?>
+							<li class="project-item">
+								<p><span><?php the_title(); ?></span> | <?php the_content(); ?></p>
+							</li>
+						<?php } ?>
+					</ul> <?php
 					wp_reset_postdata();
-				} ?>
-			</ul>
-
-			<h3>2017</h3>
-			<ul> <?php
-				$args2 = array (
-					'post_type' => 'projects_post',
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'category',
-							'field'    => 'slug',
-							'terms'    => array( '2017' )
-						)
-					),
-					'posts_per_page' => 30
-				);
-				$query2 = new WP_Query( $args2 );
-				if ( $query2->have_posts() ) {
-					while ( $query2->have_posts() ) {
-						$query2->the_post(); ?>
-						<li class="project-item">
-							<p><span><?php the_title(); ?></span> | <?php the_content(); ?></p>
-						</li>
-					<?php }
-					wp_reset_postdata();
-				} ?>
-			</ul>
-
-			<h3>2016</h3>
-			<ul> <?php
-				$args3 = array (
-					'post_type' => 'projects_post',
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'category',
-							'field'    => 'slug',
-							'terms'    => array( '2016' )
-						)
-					),
-					'posts_per_page' => 30
-				);
-				$query3 = new WP_Query( $args3 );
-				if ( $query3->have_posts() ) {
-					while ( $query3->have_posts() ) {
-						$query3->the_post(); ?>
-						<li class="project-item">
-							<p><span><?php the_title(); ?></span> | <?php the_content(); ?></p>
-						</li>
-					<?php }
-					wp_reset_postdata();
-				} ?>
-			</ul>
+				}
+			} ?>
 		</div>
 	</div>
 
@@ -155,7 +114,6 @@
 			<?php
 				$args = array(
 					'post_type' => 'about_post',
-					'posts_per_page' => 10,
 					'order' => "ASC"
 				);
 				$loop = new WP_Query( $args );

@@ -1,0 +1,75 @@
+.Modal {
+    position: fixed;
+    min-width: $fullWidthVp;
+    min-height: $fullHeightVp;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding-top: 4rem;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background: rgba(0,0,0,0.9);
+
+    &__Image {
+        max-height: 75vh;
+        max-width: $fullSizePercent;
+    }
+
+    &__Caption {
+        @include flexCenterCenter;
+        margin-top: 10px;
+    }
+
+    h3, p, a {
+        color: $caption-grey;
+        font-size: 0.9rem;
+    }
+
+    &__Link {
+        margin-left: 10px;
+    }
+
+    &__Content {
+        padding: 0rem 10px;
+        border-right: 1px solid fuchsia;
+
+        h3 {
+            padding-bottom: 5px;
+            margin: 0;
+        }
+
+        p, a {
+            font-size: 0.8rem;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &__Close {
+        width: 100%;
+        text-align: right;
+        color: $grey-1;
+        font-size: 4rem;
+
+        @include respond-to(small) {
+            width: auto;
+            position: absolute;
+            top: -15px;
+            right: 0;
+        }
+
+        &:hover,
+        &:focus {
+            color: $grey;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+
+    &__Box {
+        display: flex;
+        align-items: center;
+    }
+}

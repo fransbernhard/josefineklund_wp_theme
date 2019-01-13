@@ -1,85 +1,71 @@
 'use strict'
 /* global require */
 
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    plumber = require('gulp-plumber'),
-    autoprefixer = require('gulp-autoprefixer'),
-    sourcemaps = require('gulp-sourcemaps'),
-    browserSync = require('browser-sync'),
-    merge = require('merge-stream'),
-    cssmin = require('gulp-cssmin'),
-    uglify = require('gulp-uglifyjs'),
-    reload = browserSync.reaload,
-    imagemin = require('gulp-imagemin'),
-    cache = require('gulp-cache'),
-    babel = require('gulp-babel'),
-    concat = require('gulp-concat');
+var gulp            = require('gulp'),
+    sass            = require('gulp-sass'),
+    autoprefixer    = require('gulp-autoprefixer'),
+    browserSync     = require('browser-sync').create(),
+    uglify          = require('gulp-uglify'),
+    rename          = require('gulp-rename'),
+    imagemin        = require('gulp-imagemin'),
+    cache           = require('gulp-cache'),
+    babel           = require('gulp-babel'),
+    newer           = require('gulp-newer');
 
-// Internal config, folder structure
 var paths = {
     style: {
-        source: 'app/sass/',
-        destination: 'dist/css/',
+        src: 'app/sass/',
+        output: 'dist/',
     },
     script: {
-        source: 'app/js/**/*.js',
-        destination: 'dist/js/',
+        src: 'app/js/**/*.js',
+        output: 'dist/',
+    },
+    img: {
+        src: 'app/img/**/*',
+        output: 'dist/img/',
     }
 };
 
-// browser-sync task for starting the server.
-gulp.task('browser-sync', function() {
-    var files = [
-        './style.css',
-        './*.php'
-    ];
-
-    browserSync.init(files, {
-        proxy: "http://localhost/josefin",
-        notify: false
-    });
+gulp.task('CSS', () => {
+    return gulp.src(paths.style.src + 'style.scss')
+      .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+      .pipe(autoprefixer())
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(gulp.dest(paths.style.output))
+      .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('images', function(){
-    gulp.src('app/img/**/*')
-      .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-      .pipe(gulp.dest('dist/img/'));
+gulp.task('JS', () => {
+    return gulp.src(paths.script.src)
+        .pipe(newer(paths.script.output))
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(paths.script.output))
+        .on('error', error => {
+            console.error('' + error);
+        })
+        .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('js', function() {
-    gulp.src(paths.script.source)
-      .pipe(babel({
-        presets: ['env']
-      }))
-      .pipe(uglify('josefin.min.js'))
-      .pipe(gulp.dest(paths.script.destination))
-      .pipe(browserSync.reload({
-        stream: true
-      }));
+gulp.task('IMAGES', () => {
+    gulp.src(paths.img.src)
+        .pipe(newer(paths.img.output))
+        .pipe(cache(imagemin({
+            optimizationLevel: 3,
+            progressive: true,
+            interlaced: true
+        })))
+        .pipe(gulp.dest(paths.img.output));
 });
 
-try {
-    gulp.task('sass', function() {
-        return gulp
-          .src(paths.style.source + 'style.scss')
-          .pipe(plumber())
-          .pipe(sourcemaps.init())
-          .pipe(sass().on('error', sass.logError))
-          .pipe(autoprefixer())
-          .pipe(sourcemaps.write())
-          .pipe(cssmin())
-          .pipe(gulp.dest(paths.style.destination))
-          .pipe(browserSync.reload({
-              stream: true
-          }));
-    });
-} catch(e) {
-    console.log("ERROR:", e.stack);
-}
-
-gulp.task('default', ['sass', 'js', 'images', 'browser-sync'], function(){
-    gulp.watch(paths.style.source + '**/*.scss', ['sass']);
-    gulp.watch(paths.script.source, ['js']);
-    gulp.watch('**/*.php', browserSync.reload);
+gulp.task('WATCH', () => {
+    gulp.watch(paths.style.src + '**/*.scss', ['CSS']);
+    gulp.watch(paths.script.src, ['JS']);
+    gulp.watch('**/*.php').on('change', browserSync.reload);
 });
+
+gulp.task('default', ['CSS', 'JS', 'IMAGES', 'WATCH']);
