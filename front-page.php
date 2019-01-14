@@ -43,16 +43,11 @@
 			if ( $postQuery->have_posts() ) : while ( $postQuery->have_posts() ) : $postQuery->the_post();
 				if ( has_post_thumbnail() ) :
 					$thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');
-
 					?>
 
 					<div
 						class="post"
-						onclick="openModal(
-							'<?= $thumbnailBgImg[0] ?>',
-							'<?= the_title(); ?>',
-							'<?= wp_strip_all_tags(get_the_content()) ?>'
-						)"
+						onclick="openModal('<?= the_title(); ?>')"
 					>
 						<div
 						    class="post-thumbnail"
@@ -66,8 +61,24 @@
 						</div>
 					</div>
 
-					<?php get_template_part( 'template-parts/post/modal-image' );
-				endif;
+					<div id="Modal" class="Modal">
+					    <span class="Modal__Close">&times;</span>
+
+					    <div class="Modal__Box">
+					        <img class="Modal__Image" src='<?= $thumbnailBgImg[0] ?>'>
+					    </div>
+
+					    <div id="Modal__Caption" class="Modal__Caption">
+					        <div class="Modal__Content">
+					            <h3 class="Modal__Title"><?= the_title(); ?></h3>
+								<div id="Modal__Text">
+									<?= the_content(); ?>
+								</div>
+					        </div>
+					        <a id="Modal__Link" class="Modal__Link">Contact me</a>
+					    </div>
+					</div>
+				<?php endif;
 			endwhile; endif;
 		?>
 		</div>

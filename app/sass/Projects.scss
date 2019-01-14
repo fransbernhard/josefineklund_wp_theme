@@ -5,6 +5,7 @@
 
 .allProjects {
     min-height: $fullHeightVp;
+    padding: 40px 0;
     width: $fullWidthVp;
     @include flexColumnCenterCenter;
 }
@@ -13,13 +14,11 @@
     background: rgba(246, 195, 203, 0.90);
     border-radius: 1rem;
     padding: 1rem;
-    margin: 4rem 0rem;
+    margin: 40px 0;
+
     ul {
         padding: 0px;
         margin: 0px;
-    }
-    @include respond-to(small) {
-        margin: 0rem;
     }
 }
 

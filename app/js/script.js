@@ -48,27 +48,24 @@ $(document).ready(() => {
 });
 
 // MODAL IMAGE
-function openModal(URL, TITLE, CONTENT){
-    var modal = document.getElementById('Modal')
-    var modalImg = document.getElementById("Modal__Image")
-    var modalTitle = document.getElementById("Modal__Title")
-    var modalText = document.getElementById("Modal__Text")
-    var modalLink = document.getElementById("Modal__Link")
-    var modalClose = document.getElementsByClassName("Modal__Close")[0]
+var modal = document.getElementById('Modal')
+var modalClose = document.getElementsByClassName("Modal__Close")[0]
 
+modalClose.onclick = () => {
+    modal.style.display = "none"
+}
+
+function openModal(TITLE){
+    var modalLink = document.getElementById("Modal__Link")
     modal.style.display = "flex"
-    modalTitle.innerHTML = TITLE
-    modalImg.src = URL
-    modalText.innerHTML = CONTENT
 
     var trimTitle = encodeURIComponent(TITLE.trim())
     modalLink.href = "mailto:josefineklundmail@gmail.com?Subject=" + trimTitle
-    modalLink.innerHTML = "Contact me"
-
-    modalClose.onclick = () => {
-        modal.style.display = "none"
-    }
 }
+
+$(document).keyup(e => {
+    if (e.keyCode === 27) modal.style.display = "none"
+});
 
 // RESPONSIVE MENU
 var menuPrimary = document.getElementById("menu-primary-id")
