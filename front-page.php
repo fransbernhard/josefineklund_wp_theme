@@ -55,8 +55,8 @@
 						></div>
 						<div class="post-content">
 						    <h3 class="thumbnail-h3"><?= the_title(); ?></h3>
-						    <div id="thumbnail-content">
-								<?= the_content(); ?>
+						    <div class="thumbnail-content">
+								<p><?= the_content(); ?></p>
 							</div>
 						</div>
 					</div>
@@ -72,7 +72,7 @@
 					        <div class="Modal__Content">
 					            <h3 class="Modal__Title"><?= the_title(); ?></h3>
 								<div id="Modal__Text">
-									<?= the_content(); ?>
+									<p><?= the_content(); ?></p>
 								</div>
 					        </div>
 					        <a id="Modal__Link" class="Modal__Link">Contact me</a>

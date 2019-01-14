@@ -53,10 +53,17 @@
     opacity: 0;
     transition: .5s ease;
     background-color: rgba(0,0,0,0.4);
-    h3, p {
+    h3 {
+        font-size: 0.8rem;
         color: white;
         text-align: center;
     }
+}
+
+.post-content {
+    font-size: 0.8rem!important;
+    color: white!important;
+    text-align: center!important;
 }
 
 .post:hover .post-thumbnail {
