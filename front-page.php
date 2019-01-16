@@ -42,13 +42,14 @@
 			$postQuery = new WP_Query( $postArgs );
 			if ( $postQuery->have_posts() ) : while ( $postQuery->have_posts() ) : $postQuery->the_post();
 				if ( has_post_thumbnail() ) :
+
 					$thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');
+
+					$content = get_the_content();
+
 					?>
 
-					<div
-						class="post"
-						onclick="openModal('<?= the_title(); ?>')"
-					>
+					<div class="post" onclick="openModal('<?= the_title(); ?>', '<?= $thumbnailBgImg[0] ?>')">
 						<div
 						    class="post-thumbnail"
 						    style="background-image: url('<?= $thumbnailBgImg[0]; ?>');"
@@ -65,21 +66,23 @@
 					    <span class="Modal__Close">&times;</span>
 
 					    <div class="Modal__Box">
-					        <img class="Modal__Image" src='<?= $thumbnailBgImg[0] ?>'>
+					        <img class="Modal__Image" id="Modal__Image" src='<?= $thumbnailBgImg[0] ?>'>
 					    </div>
 
 					    <div id="Modal__Caption" class="Modal__Caption">
 					        <div class="Modal__Content">
 					            <h3 class="Modal__Title"><?= the_title(); ?></h3>
-								<div id="Modal__Text">
-									<p><?= the_content(); ?></p>
-								</div>
+								<!-- <div class="Modal__TextContainer">
+									<p id="Modal__Text"></p>
+								</div> -->
 					        </div>
 					        <a id="Modal__Link" class="Modal__Link">Contact me</a>
 					    </div>
 					</div>
 				<?php endif;
-			endwhile; endif;
+			endwhile;
+			wp_reset_postdata();
+		endif;
 		?>
 		</div>
 	</div>

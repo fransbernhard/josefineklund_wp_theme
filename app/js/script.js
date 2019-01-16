@@ -25,7 +25,7 @@ $(document).ready(() => {
             for (var item in data.data) {
                 $('#insta').append('<li><a target="_blank" href="'+data.data[item].link+'" class="insta-post" style="background-image: url('+data.data[item].images.low_resolution.url+'"></a></li>')
             }
-        }).catch(function(err) {
+        }).catch(err => {
             console.log('Error fetching products: ' + err.message);
         });
 
@@ -55,9 +55,14 @@ modalClose.onclick = () => {
     modal.style.display = "none"
 }
 
-function openModal(TITLE){
+function openModal(TITLE, IMAGEURL){
     var modalLink = document.getElementById("Modal__Link")
+    var modalImage = document.getElementById("Modal__Image")
+    // var modalText = document.getElementById("Modal__Text")
+
     modal.style.display = "flex"
+    modalImage.src = IMAGEURL
+    // modalText.innerHtml = CONTENT
 
     var trimTitle = encodeURIComponent(TITLE.trim())
     modalLink.href = "mailto:josefineklundmail@gmail.com?Subject=" + trimTitle

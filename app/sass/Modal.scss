@@ -3,18 +3,26 @@
     min-width: $fullWidthVp;
     min-height: $fullHeightVp;
     display: none;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-flow: column;
-    padding-top: 4rem;
     left: 0;
     top: 0;
     overflow: auto;
     background: rgba(0,0,0,0.9);
 
+    @include respond-to(small) {
+        padding-top: 4rem;
+        justify-content: center;
+    }
+
     &__Image {
-        max-height: 75vh;
         max-width: $fullSizePercent;
+        max-height: 75vh;
+
+        @include respond-to(small) {
+            max-height: 75vh;
+        }
     }
 
     &__Caption {
