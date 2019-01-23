@@ -49,7 +49,11 @@
 
 					?>
 
-					<div class="post" onclick="openModal('<?= the_title(); ?>', '<?= $thumbnailBgImg[0] ?>')">
+					<div
+						class="post"
+						data-title="<?= the_title(); ?>"
+						data-content="<?= the_content(); ?>"
+						data-image="<?= $thumbnailBgImg[0] ?>">
 						<div
 						    class="post-thumbnail"
 						    style="background-image: url('<?= $thumbnailBgImg[0]; ?>');"
@@ -71,10 +75,10 @@
 
 					    <div id="Modal__Caption" class="Modal__Caption">
 					        <div class="Modal__Content">
-					            <h3 class="Modal__Title"><?= the_title(); ?></h3>
-								<!-- <div class="Modal__TextContainer">
+					            <h3 id="Modal__Title" class="Modal__Title"></h3>
+								<div class="Modal__TextContainer">
 									<p id="Modal__Text"></p>
-								</div> -->
+								</div>
 					        </div>
 					        <a id="Modal__Link" class="Modal__Link">Contact me</a>
 					    </div>

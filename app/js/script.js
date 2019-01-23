@@ -55,14 +55,25 @@ modalClose.onclick = () => {
     modal.style.display = "none"
 }
 
-function openModal(TITLE, IMAGEURL){
+$('.post').on("click", function(){
+    var title = this.getAttribute('data-title');
+    var imageUrl = this.getAttribute('data-image');
+    var content = this.getAttribute('data-content');
+
+    openModal(title, imageUrl, content);
+})
+
+function openModal(TITLE, IMAGEURL, CONTENT){
+
     var modalLink = document.getElementById("Modal__Link")
     var modalImage = document.getElementById("Modal__Image")
-    // var modalText = document.getElementById("Modal__Text")
+    var modalContent = document.getElementById("Modal__Text")
+    var modalTitle = document.getElementById("Modal__Title")
 
     modal.style.display = "flex"
     modalImage.src = IMAGEURL
-    // modalText.innerHtml = CONTENT
+    modalTitle.innerHTML = TITLE
+    modalContent.innerHTML = CONTENT
 
     var trimTitle = encodeURIComponent(TITLE.trim())
     modalLink.href = "mailto:josefineklundmail@gmail.com?Subject=" + trimTitle
