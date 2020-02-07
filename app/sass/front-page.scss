@@ -1,0 +1,167 @@
+.Page-Home {
+    width: 100vw;
+    position: relative;
+
+    &__Top {
+        width: 100vw;
+        min-height: 100vh;
+    }
+
+    &__Background {
+        z-index: -1;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: url('./img/b.jpg') no-repeat top center scroll;
+        background-size: cover;
+    }
+
+    &__Rotate-Img {
+        @include flexCenterCenter;
+        position: fixed;
+        right: 0px;
+        cursor: url("http://www.josefineklund.com/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        animation: 1.5s ease-out 0s 1 slideInFromBottom, rotatingBack 20s linear 2s infinite;
+        z-index: 7;
+
+        @include respond-to(small) {
+            width: 400px;
+            height: 400px;
+        }
+    }
+
+    .Instagram {
+        position: fixed;
+        background: $pink;
+        left: 0;
+        top: 400px;
+        border-radius: 50%;
+        animation: rotating 10s linear infinite;
+        
+        @include respond-to(small) {
+            top: 45%;
+        }
+    
+        &__Link {
+            @include flexCenterCenter;
+            width: 100px;
+            height: 100px;
+            font-size: 0.68rem;
+    
+            @include respond-to(small) {
+                font-size: 0.9rem;
+                width: 150px;
+                height: 150px;
+            }
+        }
+    }
+    
+    .Project-Btn {
+        z-index: 1;
+        position: fixed;
+        left: 0;
+        top: 10%;
+        animation: rotatingBack 15s linear infinite;
+        transition: background-color 0.6s;
+    
+        @include respond-to(small) {
+            z-index: 6;
+            top: 35%;
+        }
+    
+        &__Link {
+            @include flexCenterCenter;
+            height: 110px;
+            width: 110px;
+            background: #69b4ff;
+            border-radius: 50%;
+    
+            @include respond-to(small) {
+                height: 100px;
+                width: 100px;
+            }
+        }
+    }
+
+    .Information {
+        width: 100vw;
+        @include flexColumnCenterCenter;
+        background: $babyBlue;
+        z-index: 6;
+    
+        &__Wrapper {
+            max-width: 940px;
+            display: flex;
+            justify-content: center;
+            flex-flow: column;
+            padding: 4rem 1rem;
+            @include respond-to(small) {
+                padding: 6rem 1rem;
+            }
+        }
+    }
+
+}
+
+.Page-404 {
+    width: 100vw;
+    height: 100vh;
+    @include flexCenterCenter;
+    position: fixed;
+    background: url('./img/b.jpg') no-repeat top center scroll;
+    background-size: cover;
+    z-index: -1;
+
+    &__Wrapper {
+        max-width: $wrapper;
+        @include flexCenterCenter;
+    }
+}
+
+
+
+
+// AUDIO
+// // safari
+// audio {
+//     position: fixed;
+//     display: none;
+//     bottom: 0px;
+// }
+
+// // other browsers
+// #mep_0 {
+//     display: none;
+//     position: fixed;
+//     flex-flow: column;
+//     max-width: 50px;
+//     bottom: 0px;
+//     @include respond-to(small) {
+//         max-width: 140px;
+//     }
+// }
+
+// .mejs-controls a.mejs-horizontal-volume-slider {
+//     display: none!important;
+//     @include respond-to(small) {
+//         display: table!important;
+//     }
+// }
+
+// .mejs-container, .mejs-container .mejs-controls, .mejs-embed, .mejs-embed body {
+//     border-radius: 0px 7px 0px 0px;
+// }
+
+// .mejs-time, .mejs-currenttime-container, .mejs-time-rail {
+//     display: none;
+// }
+
+// .mejs-volume-button, .mejs-mute {
+//     display: none;
+//     @include respond-to(small) {
+//         display: block;
+//     }
+// }

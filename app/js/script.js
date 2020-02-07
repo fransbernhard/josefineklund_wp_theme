@@ -6,29 +6,8 @@
 /* jshint node: true */
 
 var $ =  jQuery,
-    user_id = '1466267444',
-    access_token = '1466267444.0b0408c.d1570f80a5e34925a3ad2d4201a1235d',
-    istagramContainer = document.getElementById("insta");
 
 $(document).ready(() => {
-    const myObject = {
-        method: "GET",
-        headers: {
-            "Content-Type": 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Accept': 'application/json'
-        }
-    };
-
-    fetch('https://api.instagram.com/v1/users/' + user_id + '/media/recent/?access_token=' + access_token, myObject)
-        .then(res => res.json())
-        .then(data => {
-            for (var item in data.data) {
-                $('#insta').append('<li><a target="_blank" href="'+data.data[item].link+'" class="insta-post" style="background-image: url('+data.data[item].images.low_resolution.url+'"></a></li>')
-            }
-        }).catch(err => {
-            console.log('Error fetching products: ' + err.message);
-        });
-
     // CHECK BROWSER FOR AUDIO + MOVE ROTATING IMAGE
     var isSafari = window.safari !== undefined,
         SAFARI = document.getElementById("safariAudio"),

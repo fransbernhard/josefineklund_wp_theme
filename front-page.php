@@ -2,32 +2,60 @@
 	get_header();
 	get_template_part( 'template-parts/navigation' );
 	global $post;
+
+	$instagram = get_field("instagram");
+	$project = get_field("project");
+	$rotateImage = get_field("rotating_image");
+	// $email = ;
+	// $header 
+
+
 ?>
 
-<main id="main" class="container" role="main">
-	<div class="background-img"></div>
+<main class="Page-Home">
+	<div class="Page-Home__Background"></div>
 
-	<a href="#instagram">
-		<div class="rotating rotate" id="rotate">
-			<h3>Instagram</h3>
+	<?php if($instagram["title"]): ?>
+		<div class="Instagram">
+			<a 
+				class="Instagram__Link" 
+				href="<?= $instagram["link"]; ?>"
+				target="_blank"
+			>
+				<?= $instagram["title"]; ?>
+			</a>
 		</div>
-	</a>
+	<?php endif; ?>
 
-	<div class="projects-container">
-			<a id="projects-img" class="projects" href="#projects">Projects</a>
+	<div class="Project-Btn">
+		<?php if($project["title"]): ?>
+			<a 
+				class="Project-Btn__Link" 
+				id="projects-img"
+				href="<?= $project["link"]; ?>"
+				target="_blank"
+			>
+				<?= $project["title"]; ?>
+			</a>
+		<?php else: ?>
+			<a 
+				class="Project-Btn__Link" 
+				id="projects-img"  
+				href="#projects"
+			>Projects</a>
+		<?php endif; ?>
 	</div>
+	
+	<?php if($rotateImage): ?>
+		<img 
+			class="Page-Home__Rotate-Img" 
+			src="<?= $rotateImage ?>"
+			alt="Josefin Eklund"
+		>
+	<?php endif; ?>
 
-	<?php if ( has_post_thumbnail() ) {
-		$homeImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
-		<img id="rotate-img" class="rotating-back rotate" src="<?= $homeImg[0] ?>">
-	<?php } ?>
-
-	<!-- IMAGE SCREENSHOT FROM AMAZING VADEOMAKER = LOROCROM @ https://vimeo.com/243208219 -->
-	<div class="first-section" id="home">
-		<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-	     	the_content();
-		endwhile; endif; ?>
-	</div>
+	<!-- IMAGE SCREENSHOT FROM AMAZING VIDEOMAKER = LOROCROM @ https://vimeo.com/243208219 -->
+	<div class="Page-Home__Top" id="home"></div>
 
 	<div class="post-container" id="art">
 		<h2 class="font-effect-neon">ART WORKS</h2>
@@ -42,9 +70,7 @@
 			$postQuery = new WP_Query( $postArgs );
 			if ( $postQuery->have_posts() ) : while ( $postQuery->have_posts() ) : $postQuery->the_post();
 				if ( has_post_thumbnail() ) :
-
 					$thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');
-
 					$content = get_the_content();
 
 					?>
@@ -91,10 +117,6 @@
 		</div>
 	</div>
 
-	<div id="instagram">
-		<ul id="insta"></ul>
-	</div>
-
 	<div class="allProjects" id="projects">
 		<div class="projects-wrapper">
 			<?php $categories = get_categories(array(
@@ -127,18 +149,21 @@
 		</div>
 	</div>
 
-	<div class="about" id="about">
-		<div class="about-wrapper">
+	<div class="Information">
+		<div class="Information__Wrapper">
 			<?php
 				$args = array(
 					'post_type' => 'about_post',
 					'order' => "ASC"
 				);
 				$loop = new WP_Query( $args );
-				while ( $loop->have_posts() ) : $loop->the_post();
-					get_template_part( 'template-parts/post/content' );
-				endwhile;
+				while ( $loop->have_posts() ) : $loop->the_post(); 
 			?>
+				<div class="about-post">
+					<h3><?php the_title(); ?></h3>
+					<p><?php the_content(); ?></p>
+				</div>
+			<?php endwhile; ?>
 			<a class="emailMe font-effect-neon" id="emailMe" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
 		</div>
 	</div>

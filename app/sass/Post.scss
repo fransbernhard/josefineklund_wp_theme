@@ -17,14 +17,14 @@
 // ON HOVER
 .post {
     position: relative;
-    width: 175px;
-    height: 175px;
+    width: 140px;
+    height: 140px;
     cursor: pointer;
     margin: 5px;
     background: rgba(0,0,0,0.7);
     @include respond-to(small) {
-        width: 250px;
-        height: 250px;
+        width: 150px;
+        height: 150px;
     }
 }
 
@@ -32,11 +32,11 @@
 .post-thumbnail {
     position: relative;
     @include bg;
-    width: 175px;
-    height: 175px;
+    width: 140px;
+    height: 140px;
     @include respond-to(small) {
-        width: 250px;
-        height: 250px;
+        width: 150px;
+        height: 150px;
     }
 }
 

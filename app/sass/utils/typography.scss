@@ -64,9 +64,11 @@ h5 {
     text-transform: uppercase;
     padding-top: 1rem;
     cursor: url("http://www.josefineklund.com/wp-content/uploads/2018/04/femme_sm.png"), pointer;
+    
     h1 {
         color: yellow;
     }
+    
     @include respond-to(small) {
         padding: 1rem;
     }
