@@ -5,7 +5,7 @@
 
 <main class="Page-404" role="main">
 	<div class="Page-404__Wrapper">
-		<h1 class="font-effect-neon">PAGE DOES NOT EXIST!</h1>
+		<h1 class="Page-404__Text font-effect-neon">PAGE DOES NOT EXIST!</h1>
 	</div>
 </main>
 

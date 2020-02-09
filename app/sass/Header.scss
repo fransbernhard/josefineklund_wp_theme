@@ -6,7 +6,7 @@
     right: 0px;
     bottom: 0px;
     background: fuchsia;
-    @include respond-to(small) {
+    @include media(small) {
         display: block;
     }
 }
@@ -44,7 +44,7 @@
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
 
-    @include respond-to(small) {
+    @include media(small) {
         display: none;
     }
 

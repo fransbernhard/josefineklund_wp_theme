@@ -1,40 +1,14 @@
 'use strict';
-/*jslint browser: true*/
-/*jshint globalstrict: true*/
-/*global $, jQuery, alert*/
-/*jslint node: true */
-/* jshint node: true */
+var $ =  jQuery;
 
-var $ =  jQuery,
-
-$(document).ready(() => {
-    // CHECK BROWSER FOR AUDIO + MOVE ROTATING IMAGE
-    var isSafari = window.safari !== undefined,
-        SAFARI = document.getElementById("safariAudio"),
-        OTHER_BROWSER = document.getElementById("mep_0"),
-        divImg = document.getElementById('rotate-img');
-
-    if(location.pathname == "/josefin/"){
-        if (isSafari) {
-            SAFARI ? SAFARI.style.display="block" : null
-            OTHER_BROWSER ? OTHER_BROWSER.style.display="none" : null
-            divImg.style.zIndex = 0
-        } else {
-            SAFARI ? SAFARI.style.display="none" : null
-            OTHER_BROWSER ? OTHER_BROWSER.style.display="block" : null
-        }
-    }
-});
-
-// MODAL IMAGE
-var modal = document.getElementById('Modal')
-var modalClose = document.getElementsByClassName("Modal__Close")[0]
+var modal = document.getElementById('Modal');
+var modalClose = document.getElementsByClassName("Modal__Close")[0];
 
 modalClose.onclick = () => {
     modal.style.display = "none"
 }
 
-$('.post').on("click", function(){
+$('.Post').on("click", function(){
     var title = this.getAttribute('data-title');
     var imageUrl = this.getAttribute('data-image');
     var content = this.getAttribute('data-content');
@@ -43,7 +17,6 @@ $('.post').on("click", function(){
 })
 
 function openModal(TITLE, IMAGEURL, CONTENT){
-
     var modalLink = document.getElementById("Modal__Link")
     var modalImage = document.getElementById("Modal__Image")
     var modalContent = document.getElementById("Modal__Text")
@@ -92,15 +65,17 @@ var i = 0;
 var b = 0;
 
 const change = () => {
-    var img = document.getElementById("projects-img");
-    var emailMe = document.getElementById("emailMe");
+    var button = document.getElementById("Project-Btn__Link");
+    console.log(button);
+    console.log("HEJHEJ")
+    var contact = document.getElementById("Information__Contact");
 
     var color = ["#a29bfe", "#00cec9", "#6c5ce7", "#74b9ff"];
     var textColor = ["#e3c3ff", "#f9f3fc", "#c5cfff", "#FFE1F0"];
 
-    if(img){
-        img.style.backgroundColor = color[i];
-        emailMe.style.color = textColor[b];
+    if(button){
+        button.style.backgroundColor = color[i];
+        contact.style.color = textColor[b];
         i = (i + 1) % color.length;
         b = (b + 1) % textColor.length;
     }

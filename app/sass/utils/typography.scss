@@ -1,10 +1,5 @@
 * {
-    // color: black;
     font-family: 'Montserrat', serif, arial;
-}
-
-.logo h1, .rotate h3, .projects  {
-    font-family: 'Syncopate', serif, arial;
 }
 
 a {
@@ -18,12 +13,12 @@ li {
 
 p {
     font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
-    font-size: 2rem;
-    margin-top: 0!important;
-    width: auto;
+    font-size: 30px;
     padding: 0;
     margin: 0;
 }
@@ -31,13 +26,6 @@ h1 {
 h2 {
     letter-spacing: 1px;
     text-transform: uppercase;
-}
-
-.emailMe {
-    transition: color 0.6s;
-    font-weight: bold;
-    color: white;
-    font-size: 1.5rem;
 }
 
 h3 {
@@ -53,28 +41,7 @@ h5 {
     margin: 0;
 }
 
-// Rotating projects link
-.projects {
-    font-size: 0.7rem;
-}
 
-// JOSEFIN LOGO
-.logo {
-    position: fixed;
-    text-transform: uppercase;
-    padding-top: 1rem;
-    cursor: url("http://www.josefineklund.com/wp-content/uploads/2018/04/femme_sm.png"), pointer;
-    
-    h1 {
-        color: yellow;
-    }
-    
-    @include respond-to(small) {
-        padding: 1rem;
-    }
-}
-
-// ABOUT SECTION
 .about-post {
     p {
         font-size: 0.8rem;
@@ -82,7 +49,6 @@ h5 {
     }
 }
 
-// MENU
 .menu-item {
     a {
         font-size: 1rem;
@@ -95,7 +61,7 @@ h5 {
         padding: 3rem;
         background-color: rgba(246, 195, 203, 0.95);
         transition: background-color 0.5s ease;
-        @include respond-to(small) {
+        @include media(small) {
             font-size: 0.6rem;
             letter-spacing: 3px;
             padding: 1.5rem;
@@ -105,34 +71,8 @@ h5 {
 
     a:hover {
         background: rgba(246, 195, 203, 0.75);
-        @include respond-to(small) {
+        @include media(small) {
             background: rgba(255,255,255,0.5)
         }
     }
-}
-
-// PROJECTS
-.projects-wrapper {
-    h3 {
-        margin-bottom: 0.2rem!important;
-        font-size: 1rem;
-    }
-}
-
-.project-item {
-    p {
-        margin: 0.3rem 0;
-        font-size: 0.7rem;
-    }
-    span {
-        font-style: italic;
-    }
-}
-
-.thumbnail-h3 {
-    margin: 0;
-}
-
-.thumbnail-p {
-    margin-bottom: 0;
 }

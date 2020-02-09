@@ -5,3 +5,22 @@
 *:focus {
     outline: none;
 }
+
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+.Logo {
+    z-index: 11;
+    position: fixed;
+    text-transform: uppercase;
+    top: 35px;
+    left: 15px;
+    cursor: pointer;
+
+    &__Title {
+        color: yellow;
+        font-family: 'Syncopate', serif, arial;
+    }
+}

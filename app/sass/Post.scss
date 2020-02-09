@@ -1,75 +1,90 @@
-.post-container {
-    min-height: 100vh;
-    padding-top: 4rem;
+.Posts {
     @include flexColumnCenterCenter;
-    h2 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    &__Title {
         color: #ffe9ec;
+        z-index: 8;
+    }
+
+    &__Wrapper {
+        max-width: 1040px;
+        @include flexCenterCenter;
+        flex-wrap: wrap;
+        margin-right: -10px;
     }
 }
 
-.post-wrapper {
-    max-width: 1040px;
-    padding: 0rem 0rem 10rem 0rem;
-    @include flexCenterCenter;
-    flex-wrap: wrap;
-}
-
-// ON HOVER
-.post {
+.Post {
     position: relative;
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
-    margin: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     background: rgba(0,0,0,0.7);
-    @include respond-to(small) {
-        width: 150px;
-        height: 150px;
+    z-index: 8;
+    
+    &:hover  {
+        @include media(small) { 
+            .Post__Thumbnail {
+                opacity: 0.3;
+            }
+            
+            .Post__Content, .Post__Title {
+                opacity: 1;
+            }
+        }
     }
-}
 
-// post thumbnail image
-.post-thumbnail {
-    position: relative;
-    @include bg;
-    width: 140px;
-    height: 140px;
-    @include respond-to(small) {
-        width: 150px;
-        height: 150px;
+    @include media(small) {
+        width: 180px;
+        height: 180px;
     }
-}
 
-// post content
-.post-content {
-    position: absolute;
-    cursor: pointer;
-    @include flexColumnCenterCenter;
-    padding: 1rem;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: rgba(0,0,0,0.4);
-    h3 {
-        font-size: 0.8rem;
+    &__Thumbnail {
+        position: relative;
+        @include bg;
+        width: 100px;
+        height: 100px;
+
+        @include media(small) {
+            width: 180px;
+            height: 180px;
+        }
+    }
+
+    &__Content {
+        position: absolute;
+        cursor: pointer;
+        @include flexColumnCenterCenter;
+        background-color: rgba(0,0,0,0.4);
+        padding: 10px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity .5s ease;
+    }
+
+    &__Title {
+        font-size: 12px;
+        margin: 0;
+        margin-bottom: 5px;
         color: white;
         text-align: center;
+
+        @include media(small) {
+            margin-bottom: 5px;
+        }
     }
-}
 
-.post-content {
-    font-size: 0.8rem!important;
-    color: white!important;
-    text-align: center!important;
-}
-
-.post:hover .post-thumbnail {
-    opacity: 0.3;
-}
-
-.post:hover .post-content {
-    opacity: 1;
+    &__Content {
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        margin-bottom: 0;
+    }
 }

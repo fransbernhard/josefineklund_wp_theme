@@ -6,14 +6,25 @@
 	$instagram = get_field("instagram");
 	$project = get_field("project");
 	$rotateImage = get_field("rotating_image");
-	// $email = ;
-	// $header 
+	
+	$logoACF = get_field("logo");
+	$logo = $logoACF ? $logoACF : "Josefin Eklund";
 
+	$contact = get_field("contact");
+	$contactMessage = $contact["email_title"] ? $contact["email_title"] : "Forever dolpin love";
 
 ?>
 
 <main class="Page-Home">
 	<div class="Page-Home__Background"></div>
+
+	<a class="Logo" href="#home">
+		<h1 
+			class="Logo__Title font-effect-fire-animation"
+		>
+			<?= $logo; ?>
+		</h1>
+	</a>
 
 	<?php if($instagram["title"]): ?>
 		<div class="Instagram">
@@ -31,7 +42,7 @@
 		<?php if($project["title"]): ?>
 			<a 
 				class="Project-Btn__Link" 
-				id="projects-img"
+				id="Project-Btn__Link"
 				href="<?= $project["link"]; ?>"
 				target="_blank"
 			>
@@ -40,7 +51,7 @@
 		<?php else: ?>
 			<a 
 				class="Project-Btn__Link" 
-				id="projects-img"  
+				id="Project-Btn__Link"  
 				href="#projects"
 			>Projects</a>
 		<?php endif; ?>
@@ -57,15 +68,15 @@
 	<!-- IMAGE SCREENSHOT FROM AMAZING VIDEOMAKER = LOROCROM @ https://vimeo.com/243208219 -->
 	<div class="Page-Home__Top" id="home"></div>
 
-	<div class="post-container" id="art">
-		<h2 class="font-effect-neon">ART WORKS</h2>
-		<div class="post-wrapper">
+	<div class="Posts" id="art">
+		<h2 class="Posts__Title font-effect-neon">ART WORKS</h2>
+		<div class="Posts__Wrapper">
 		<?php
-			$postArgs = array (
+			$postArgs = [
 				'post_type' => 'post',
 				'order'=> 'ASC',
 				'posts_per_page' => 40
-			);
+			];
 
 			$postQuery = new WP_Query( $postArgs );
 			if ( $postQuery->have_posts() ) : while ( $postQuery->have_posts() ) : $postQuery->the_post();
@@ -76,19 +87,18 @@
 					?>
 
 					<div
-						class="post"
+						class="Post"
 						data-title="<?= the_title(); ?>"
 						data-content="<?= the_content(); ?>"
-						data-image="<?= $thumbnailBgImg[0] ?>">
+						data-image="<?= $thumbnailBgImg[0] ?>"
+					>
 						<div
-						    class="post-thumbnail"
+						    class="Post__Thumbnail"
 						    style="background-image: url('<?= $thumbnailBgImg[0]; ?>');"
 						></div>
-						<div class="post-content">
-						    <h3 class="thumbnail-h3"><?= the_title(); ?></h3>
-						    <div class="thumbnail-content">
-								<p><?= the_content(); ?></p>
-							</div>
+						<div class="Post__Content">
+							<h3 class="Post__Title"><?= the_title(); ?></h3>
+							<?= the_content(); ?>
 						</div>
 					</div>
 
@@ -117,29 +127,29 @@
 		</div>
 	</div>
 
-	<div class="allProjects" id="projects">
-		<div class="projects-wrapper">
-			<?php $categories = get_categories(array(
+	<div class="Projects" id="projects">
+		<div class="Projects__Wrapper">
+			<?php $categories = get_categories([
 				'orderby' => 'name',
 				'order'   => 'DESC'
-			));
+			]);
 
 			foreach ($categories as $category) {
-				$args = array(
+				$args = [
 					'post_type' => 'projects_post',
 					'category_name' => $category->name,
 					'posts_per_page' => 30
-				);
+				];
 
 				$query = new WP_Query( $args );?>
 
 				<?php if ($query->have_posts()) { ?>
-					<h3><?= $category->name ?></h3>
-					<ul>
+					<h3 class="Projects__Title"><?= $category->name ?></h3>
+					<ul class="Projects__List">
 						<?php while ( $query->have_posts() ) {
 							$query->the_post(); ?>
-							<li class="project-item">
-								<p><span><?php the_title(); ?></span> | <?php the_content(); ?></p>
+							<li class="Projects__Item">
+								<span class="Projects__Item-Title"><?php the_title(); ?></span> <?php the_content(); ?>
 							</li>
 						<?php } ?>
 					</ul> <?php
@@ -149,22 +159,27 @@
 		</div>
 	</div>
 
-	<div class="Information">
+	<div class="Information" id="about">
 		<div class="Information__Wrapper">
 			<?php
-				$args = array(
+				$args = [
 					'post_type' => 'about_post',
 					'order' => "ASC"
-				);
+				];
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post(); 
 			?>
 				<div class="about-post">
 					<h3><?php the_title(); ?></h3>
-					<p><?php the_content(); ?></p>
+					<?php the_content(); ?>
 				</div>
 			<?php endwhile; ?>
-			<a class="emailMe font-effect-neon" id="emailMe" href="mailto:josefineklundmail@gmail.com?Subject=forever%20dolphin%20love" target="_top">EMAIL ME</a>
+			<a 
+				class="Information__Contact font-effect-neon" 
+				id="Information__Contact" 
+				href="mailto:<?= $contact["email"]; ?>?subject=<?= $contactMessage; ?>" 
+				target="_top"
+			><?= $contact["title"]; ?></a>
 		</div>
 	</div>
 

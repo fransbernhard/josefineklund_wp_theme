@@ -1,5 +1,11 @@
 <?php
 
+function my_theme_enqueue_scripts(){
+    wp_enqueue_style( 'style', get_template_directory_uri() . '/dist/style.min.css' );
+    wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/dist/script.min.js', ['jquery'], 1, true );
+}
+add_action('wp_enqueue_scripts', "my_theme_enqueue_scripts");
+
 function register_cpt() {
     register_post_type( 'about_post', [
             'supports' => ['thumbnail', 'title', 'post-formats', 'editor', 'category'],
@@ -27,15 +33,6 @@ function register_cpt() {
     flush_rewrite_rules( false );
 }
 add_action( 'init', 'register_cpt' );
-
-// Remove auto added p tags from content
-remove_filter( 'the_content', 'wpautop' );
-
-function my_theme_enqueue_scripts(){
-    wp_enqueue_style( 'hip-style', get_template_directory_uri() . '/dist/style.min.css' );
-    wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/dist/script.min.js', ['jquery'], 1, true );
-}
-add_action('wp_enqueue_scripts', "my_theme_enqueue_scripts");
 
 // Register Menu
 function register_my_menus() {

@@ -4,7 +4,6 @@
 var gulp            = require('gulp'),
     sass            = require('gulp-sass'),
     autoprefixer    = require('gulp-autoprefixer'),
-    browserSync     = require('browser-sync').create(),
     uglify          = require('gulp-uglify'),
     rename          = require('gulp-rename'),
     imagemin        = require('gulp-imagemin'),
@@ -33,7 +32,6 @@ gulp.task('CSS', () => {
       .pipe(autoprefixer())
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest(paths.style.output))
-      .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('JS', () => {
@@ -48,7 +46,6 @@ gulp.task('JS', () => {
         .on('error', error => {
             console.error('' + error);
         })
-        .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('IMAGES', () => {
@@ -65,7 +62,6 @@ gulp.task('IMAGES', () => {
 gulp.task('WATCH', () => {
     gulp.watch(paths.style.src + '**/*.scss', ['CSS']);
     gulp.watch(paths.script.src, ['JS']);
-    gulp.watch('**/*.php').on('change', browserSync.reload);
 });
 
 gulp.task('default', ['CSS', 'JS', 'IMAGES', 'WATCH']);
