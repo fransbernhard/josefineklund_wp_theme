@@ -14,7 +14,6 @@
                         $thumbnailBgImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium');
                         array_push($postImageArr, $thumbnailBgImg[0]); ?>
 
-                        <!-- THUMBNAIL SECTION -->
                         <div
                           class="post" onclick="openModal('<?= $thumbnailBgImg[0] ?>', '<?php the_title(); ?>', '<?= $post->ID ?>', '<?= the_content() ?>')"
                           title="<?= the_title_attribute(); ?>"
