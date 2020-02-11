@@ -1,17 +1,17 @@
-// SIZE VARIABLES
 $fullWidthVp: 100vw;
 $fullSizePercent: 100%;
 $wrapper: 940px;
-
-// SPACE VARIALBES
-$xs-space: 5px;
-$sm-space: 10px;
-$m-space: 15px;
-$l-space: 20px;
-$xl-space: 30px;
 
 $grey: #bbb;
 $grey-1: #f1f1f1;
 $caption-grey: #ccc;
 $pink: #FF83FA;
 $babyBlue: #69b4ff;
+
+$breakpoints: (
+    sm: 600px,
+    md: 815px,
+    lg: 990px,
+    xl: 1200,
+    xxl: 1400px
+);

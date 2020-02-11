@@ -66,8 +66,6 @@ var b = 0;
 
 const change = () => {
     var button = document.getElementById("Project-Btn__Link");
-    console.log(button);
-    console.log("HEJHEJ")
     var contact = document.getElementById("Information__Contact");
 
     var color = ["#a29bfe", "#00cec9", "#6c5ce7", "#74b9ff"];

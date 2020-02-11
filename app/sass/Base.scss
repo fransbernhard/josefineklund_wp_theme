@@ -12,16 +12,29 @@ ul, li {
 }
 
 .Logo {
-    z-index: 11;
     position: fixed;
     text-transform: uppercase;
-    top: 10px;
+    top: 15px;
     left: 15px;
     cursor: pointer;
 
     &__Title {
         color: yellow;
         font-family: 'Syncopate', serif, arial;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        font-size: 26px;
+
+        @include media(md) {
+            font-size: 30px;
+        }
+    }
+}
+
+.Instagram, .Project-Btn {
+    @include media(xl) {
+        z-index: 9;
     }
 }
 
@@ -33,9 +46,8 @@ ul, li {
     top: 100px;
     border-radius: 50%;
     animation: rotating 10s linear infinite;
-    z-index: 2;
     
-    @include media(md) {
+    @include media(lg) {
         top: 42%;
     }
 
@@ -58,11 +70,11 @@ ul, li {
     left: 0px;
     top: 48px;
     animation: rotatingBack 15s linear infinite;
-    z-index: 1;
-
+    
     @include media(md) {
         left: 0;
         top: 30%;
+        z-index: 1;
     }
 
     &__Link {
