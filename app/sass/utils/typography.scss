@@ -41,14 +41,6 @@ h5 {
     margin: 0;
 }
 
-
-.about-post {
-    p {
-        font-size: 0.8rem;
-        line-height: 19px;
-    }
-}
-
 .menu-item {
     a {
         font-size: 1rem;
@@ -61,7 +53,7 @@ h5 {
         padding: 3rem;
         background-color: rgba(246, 195, 203, 0.95);
         transition: background-color 0.5s ease;
-        @include media(small) {
+        @include media(md) {
             font-size: 0.6rem;
             letter-spacing: 3px;
             padding: 1.5rem;
@@ -71,7 +63,7 @@ h5 {
 
     a:hover {
         background: rgba(246, 195, 203, 0.75);
-        @include media(small) {
+        @include media(md) {
             background: rgba(255,255,255,0.5)
         }
     }

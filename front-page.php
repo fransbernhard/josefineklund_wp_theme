@@ -19,9 +19,7 @@
 	<div class="Page-Home__Background"></div>
 
 	<a class="Logo" href="#home">
-		<h1 
-			class="Logo__Title font-effect-fire-animation"
-		>
+		<h1 class="Logo__Title font-effect-fire-animation">
 			<?= $logo; ?>
 		</h1>
 	</a>
@@ -169,7 +167,7 @@
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post(); 
 			?>
-				<div class="about-post">
+				<div class="Information__Post">
 					<h3><?php the_title(); ?></h3>
 					<?php the_content(); ?>
 				</div>

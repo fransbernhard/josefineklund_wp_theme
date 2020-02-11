@@ -7,6 +7,8 @@
         padding: 1rem;
         margin: 40px auto;
         max-width: 800px;
+        position: relative;
+        z-index: 8;
     }
 
     &__Title {
@@ -17,7 +19,7 @@
     &__Item {
         margin-bottom: 5px;
 
-        @include media(small) { 
+        @include media(md) { 
             margin-bottom: 2px;
         }
 

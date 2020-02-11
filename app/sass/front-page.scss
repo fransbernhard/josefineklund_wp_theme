@@ -25,72 +25,17 @@
         animation: 1.5s ease-out 0s 1 slideInFromBottom, rotatingBack 20s linear 2s infinite;
         z-index: -1;
 
-        @include media(small) {
+        @include media(md) {
             width: 350px;
             height: 350px;
-        }
-    }
-
-    .Instagram {
-        position: fixed;
-        font-family: 'Syncopate', serif, arial;
-        background: $pink;
-        left: 0;
-        top: 100px;
-        border-radius: 50%;
-        animation: rotating 10s linear infinite;
-        z-index: 2;
-        
-        @include media(small) {
-            top: 42%;
-        }
-    
-        &__Link {
-            @include flexCenterCenter;
-            width: 90px;
-            height: 90px;
-            font-size: 11px;
-    
-            @include media(small) {
-                font-size: 14px;
-                width: 130px;
-                height: 130px;
-            }
-        }
-    }
-    
-    .Project-Btn {
-        position: fixed;
-        left: 50px;
-        top: 40px;
-        animation: rotatingBack 15s linear infinite;
-        z-index: 1;
-    
-        @include media(small) {
-            left: 0;
-            top: 30%;
-        }
-    
-        &__Link {
-            @include flexCenterCenter;
-            transition: background-color 0.6s;
-            height: 80px;
-            width: 80px;
-            background: #69b4ff;
-            border-radius: 50%;
-            font-size: 12px;
-    
-            @include media(small) {
-                height: 100px;
-                width: 100px;
-            }
         }
     }
 
     .Information {
         @include flexColumnCenterCenter;
         background: $babyBlue;
-        z-index: 6;
+        position: relative;
+        z-index: 8;
     
         &__Wrapper {
             max-width: 940px;
@@ -98,8 +43,16 @@
             justify-content: center;
             flex-flow: column;
             padding: 4rem 1rem;
-            @include media(small) {
+            
+            @include media(md) {
                 padding: 6rem 1rem;
+            }
+        }
+
+        &__Post {
+            p {
+                font-size: 14px;
+                line-height: 24px;
             }
         }
 
@@ -116,8 +69,7 @@
 }
 
 .Page-404 {
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     @include flexCenterCenter;
     position: fixed;
     background: url('./img/b.jpg') no-repeat top center scroll;

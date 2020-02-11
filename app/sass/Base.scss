@@ -15,12 +15,68 @@ ul, li {
     z-index: 11;
     position: fixed;
     text-transform: uppercase;
-    top: 35px;
+    top: 10px;
     left: 15px;
     cursor: pointer;
 
     &__Title {
         color: yellow;
         font-family: 'Syncopate', serif, arial;
+    }
+}
+
+.Instagram {
+    position: fixed;
+    font-family: 'Syncopate', serif, arial;
+    background: $pink;
+    left: 30px;
+    top: 100px;
+    border-radius: 50%;
+    animation: rotating 10s linear infinite;
+    z-index: 2;
+    
+    @include media(md) {
+        top: 42%;
+    }
+
+    &__Link {
+        @include flexCenterCenter;
+        width: 90px;
+        height: 90px;
+        font-size: 11px;
+
+        @include media(md) {
+            font-size: 14px;
+            width: 130px;
+            height: 130px;
+        }
+    }
+}
+
+.Project-Btn {
+    position: fixed;
+    left: 0px;
+    top: 48px;
+    animation: rotatingBack 15s linear infinite;
+    z-index: 1;
+
+    @include media(md) {
+        left: 0;
+        top: 30%;
+    }
+
+    &__Link {
+        @include flexCenterCenter;
+        transition: background-color 0.6s;
+        height: 80px;
+        width: 80px;
+        background: #69b4ff;
+        border-radius: 50%;
+        font-size: 12px;
+
+        @include media(md) {
+            height: 100px;
+            width: 100px;
+        }
     }
 }
