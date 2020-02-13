@@ -73,7 +73,7 @@
 			$postArgs = [
 				'post_type' => 'post',
 				'order'=> 'ASC',
-				'posts_per_page' => 40
+				'posts_per_page' => -1
 			];
 
 			$postQuery = new WP_Query( $postArgs );
@@ -136,7 +136,7 @@
 				$args = [
 					'post_type' => 'projects_post',
 					'category_name' => $category->name,
-					'posts_per_page' => 30
+					'posts_per_page' => -1
 				];
 
 				$query = new WP_Query( $args );?>
